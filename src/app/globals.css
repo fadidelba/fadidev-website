@@ -1,29 +1,62 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafafa;
-  --foreground: #111827;
-  --muted: #6b7280;
-  --accent: #2563eb;
-  --accent-hover: #1d4ed8;
-  --border: #e5e7eb;
+  --background: #faf9f7;
+  --background-secondary: #f3f0ec;
+  --foreground: #1a1a1a;
+  --muted: #6b6560;
+  --accent: #d4714e;
+  --accent-hover: #c2603e;
+  --border: #e8e4de;
   --card-bg: #ffffff;
+  --card-hover: #fdfcfa;
+  --header-bg: rgba(250, 249, 247, 0.8);
+  --gradient-from: #faf9f7;
+  --gradient-to: #f0ebe4;
+}
+
+.dark {
+  --background: #1a1a1a;
+  --background-secondary: #242424;
+  --foreground: #e5e5e5;
+  --muted: #999490;
+  --accent: #d4714e;
+  --accent-hover: #e07e5a;
+  --border: #2e2e2e;
+  --card-bg: #242424;
+  --card-hover: #2a2a2a;
+  --header-bg: rgba(26, 26, 26, 0.8);
+  --gradient-from: #1a1a1a;
+  --gradient-to: #1f1d1b;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-border: var(--border);
   --color-card-bg: var(--card-bg);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card-hover: var(--card-hover);
+  --color-header-bg: var(--header-bg);
+  --color-gradient-from: var(--gradient-from);
+  --color-gradient-to: var(--gradient-to);
+  --font-sans: var(--font-inter);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
 }

@@ -1,62 +1,71 @@
 import { apps } from "@/data/apps";
 import { AppStoreBadge, PlayStoreBadge } from "@/components/StoreBadges";
+import FadeIn from "@/components/FadeIn";
 import Link from "next/link";
 
 export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="px-6 py-24 text-center">
-        <div className="mx-auto max-w-3xl">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            FadiDev
-          </h1>
-          <p className="mt-4 text-lg text-accent font-medium">
-            Crafting beautiful apps for iOS &amp; Android
-          </p>
-          <p className="mt-6 text-base leading-relaxed text-muted max-w-xl mx-auto">
-            We are an indie app studio focused on building premium mobile
-            experiences. Clean design, thoughtful features, and attention to
-            detail — that&apos;s what drives every app we make.
-          </p>
+      <section className="relative overflow-hidden px-6 pt-40 pb-28">
+        <div className="absolute inset-0 bg-gradient-to-b from-gradient-from to-gradient-to" />
+        <div className="relative mx-auto max-w-4xl text-center">
+          <FadeIn>
+            <h1 className="text-5xl font-semibold leading-[1.1] tracking-tight sm:text-7xl">
+              Crafting beautiful
+              <br />
+              apps for mobile
+            </h1>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-muted">
+              We are an indie app studio focused on building premium
+              experiences for iOS and Android. Clean design, thoughtful
+              features, and attention to detail.
+            </p>
+          </FadeIn>
         </div>
       </section>
 
       {/* Apps */}
-      <section className="px-6 pb-24">
+      <section className="px-6 py-28">
         <div className="mx-auto max-w-5xl">
-          <h2 className="text-2xl font-bold tracking-tight text-center">
-            Our Apps
-          </h2>
+          <FadeIn>
+            <h2 className="text-center text-3xl font-semibold tracking-tight sm:text-4xl">
+              Our Apps
+            </h2>
+          </FadeIn>
 
           {apps.length === 0 ? (
-            <p className="mt-8 text-center text-muted">
-              New apps coming soon. Stay tuned!
-            </p>
+            <FadeIn delay={0.1}>
+              <p className="mt-10 text-center text-muted">
+                New apps coming soon. Stay tuned!
+              </p>
+            </FadeIn>
           ) : (
-            <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {apps.map((app) => (
-                <Link
-                  key={app.slug}
-                  href={`/apps/${app.slug}`}
-                  className="group rounded-xl border border-border bg-card-bg p-6 transition-shadow hover:shadow-md"
-                >
-                  {/* Icon placeholder */}
-                  <div
-                    className="h-16 w-16 rounded-2xl"
-                    style={{ backgroundColor: app.iconColor || "#2563EB" }}
-                  />
-                  <h3 className="mt-4 text-lg font-semibold group-hover:text-accent transition-colors">
-                    {app.name}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">
-                    {app.description}
-                  </p>
-                  <div className="mt-4 flex gap-3">
-                    <AppStoreBadge url={app.appStoreUrl} />
-                    <PlayStoreBadge url={app.playStoreUrl} />
-                  </div>
-                </Link>
+            <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {apps.map((app, i) => (
+                <FadeIn key={app.slug} delay={i * 0.1}>
+                  <Link
+                    href={`/apps/${app.slug}`}
+                    className="group block rounded-2xl border border-border bg-card-bg p-8 transition-all duration-300 hover:scale-[1.02] hover:border-border hover:bg-card-hover hover:shadow-lg"
+                  >
+                    <div
+                      className="h-16 w-16 rounded-2xl shadow-sm transition-shadow duration-300 group-hover:shadow-md"
+                      style={{ backgroundColor: app.iconColor || "#d4a574" }}
+                    />
+                    <h3 className="mt-6 text-lg font-semibold tracking-tight transition-colors group-hover:text-accent">
+                      {app.name}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted">
+                      {app.description}
+                    </p>
+                    <div className="mt-6 flex gap-3">
+                      <AppStoreBadge url={app.appStoreUrl} />
+                      <PlayStoreBadge url={app.playStoreUrl} />
+                    </div>
+                  </Link>
+                </FadeIn>
               ))}
             </div>
           )}
