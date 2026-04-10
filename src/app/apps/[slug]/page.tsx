@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import { apps } from "@/data/apps";
 import { AppStoreBadge, PlayStoreBadge } from "@/components/StoreBadges";
 import FadeIn from "@/components/FadeIn";
-import Link from "next/link";
 import type { Metadata } from "next";
 
 export const dynamicParams = false;
@@ -97,20 +96,6 @@ export default async function AppPage({ params }: Props) {
           </div>
         </section>
 
-        {/* Links */}
-        <FadeIn>
-          <div className="mt-24 flex justify-center gap-8 text-sm text-muted">
-            <Link href={`/apps/${app.slug}/privacy`} className="transition-colors hover:text-foreground">
-              Privacy Policy
-            </Link>
-            <Link href={`/apps/${app.slug}/terms`} className="transition-colors hover:text-foreground">
-              Terms of Service
-            </Link>
-            <Link href="/support" className="transition-colors hover:text-foreground">
-              Support
-            </Link>
-          </div>
-        </FadeIn>
       </div>
     </div>
   );
