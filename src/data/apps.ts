@@ -10,21 +10,25 @@ export interface AppInfo {
 }
 
 export const apps: AppInfo[] = [
-  // To add a new app, copy this block and update the details.
-  // To remove this example, delete the object below — but note that the
-  // /apps/[slug] route requires at least one entry to build with static export.
   {
-    slug: "example-app",
-    name: "Example App",
-    tagline: "A beautiful example to get you started",
+    slug: "qrisp",
+    name: "Qrisp",
+    tagline: "Premium QR & Barcode Scanner",
     description:
-      "This is a placeholder app entry. Replace it with your real app or add more entries to this array.",
-    iconColor: "#2563EB",
+      "Scan and create QR codes and barcodes with ease. Qrisp instantly recognizes URLs, WiFi networks, contacts, and more — all while keeping your data private and on-device.",
+    iconColor: "#22C997",
     features: [
-      "Clean, modern user interface",
-      "Works offline with local data storage",
-      "Dark mode support",
-      "Regular updates and improvements",
+      "Scan QR codes and barcodes instantly with your camera",
+      "Auto-detect URLs, WiFi, contacts, emails, phone numbers, and more",
+      "Create custom QR codes for URLs, text, WiFi, contacts, and emails",
+      "Product and book lookup for scanned barcodes",
+      "Scan history with favorites, tags, and search",
+      "Batch scanning mode for scanning multiple codes in a row",
+      "Scan from images in your photo library",
+      "Export scan history as CSV or TXT",
+      "Privacy-first: all data stays on your device",
+      "14 languages supported",
+      "Dark mode, light mode, and system theme",
     ],
   },
 ];

@@ -100,8 +100,11 @@ export default async function AppPage({ params }: Props) {
         {/* Links */}
         <FadeIn>
           <div className="mt-24 flex justify-center gap-8 text-sm text-muted">
-            <Link href="/privacy" className="transition-colors hover:text-foreground">
+            <Link href={`/apps/${app.slug}/privacy`} className="transition-colors hover:text-foreground">
               Privacy Policy
+            </Link>
+            <Link href={`/apps/${app.slug}/terms`} className="transition-colors hover:text-foreground">
+              Terms of Service
             </Link>
             <Link href="/support" className="transition-colors hover:text-foreground">
               Support
