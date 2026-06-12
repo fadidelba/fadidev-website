@@ -18,7 +18,9 @@ These files are **not compiled** by Next.js — the `templates/` directory is ex
 
 **Privacy template:** `camera`, `photos`, `notifications`, `healthkit`, `third_party_apis`, `revenuecat`, `native_storekit`, `icloud_sync`
 
-**Terms template:** `freemium`, `subscriptions`, `lifetime`, `refunds`, `third_party_services`
+**Terms template:** `freemium`, `subscriptions`, `lifetime` (one-time option NEXT TO a subscription), `lifetime_only` (one-time purchase is the ONLY paid tier — the standard FadiDev model), `refunds`, `third_party_services`
+
+> Consumers: PipelineKit's `/metadata` agent (historic) and **exopilot** (`scripts/website-pages.ts` — deterministic substitution from the appranker brief + project facts, runs inside the aso phase).
 
 ## How the agent uses them
 

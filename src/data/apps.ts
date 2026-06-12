@@ -31,4 +31,21 @@ export const apps: AppInfo[] = [
       "Dark mode, light mode, and system theme",
     ],
   },
+  {
+    slug: "miletally",
+    name: "MileTally",
+    tagline: "Track miles, cut your taxes",
+    description:
+      "A local-first iOS mileage-and-expense logbook for US self-employed and gig workers that turns every tap-to-log trip and imported earnings file into a live after-mileage net figure and an accountant-ready Schedule C summary.",
+    iconColor: "#2E7D4F",
+    features: [
+      "One-Tap Trip Logging",
+      "Swipe Classifier",
+      "IRS Mileage Deduction Engine",
+      "Expense Log (mileage-method aware)",
+      "Per-Platform P&L Dashboard",
+      "CSV Earnings Import",
+      "Schedule C PDF Export",
+    ],
+  },
 ];

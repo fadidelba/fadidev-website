@@ -1,38 +1,31 @@
-// Terms-of-Service page TSX template — consumed by PipelineKit's /metadata agent.
-// Not compiled by Next.js (this `templates/` directory is excluded in tsconfig).
-//
-// Placeholders use {{NAME}} syntax. Conditional sections use
-// {{IF feature}} ... {{/IF}} markers. Available IF flags:
-//   freemium, subscriptions, lifetime, refunds, third_party_services
-
 import type { Metadata } from "next";
 import FadeIn from "@/components/FadeIn";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — {{APP_NAME}}",
-  description: "Terms of Service for {{APP_NAME}} — {{APP_TAGLINE}}.",
+  title: "Terms of Service — MileTally",
+  description: "Terms of Service for MileTally — Track miles, cut your taxes.",
 };
 
-export default function {{APP_CLASS}}TermsPage() {
+export default function MiletallyTermsPage() {
   return (
     <div className="px-6 pt-36 pb-24">
       <div className="mx-auto max-w-3xl">
         <FadeIn>
           <Link
-            href="/apps/{{APP_SLUG}}"
+            href="/apps/miletally"
             className="inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-foreground"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="15 18 9 12 15 6" />
             </svg>
-            Back to {{APP_NAME}}
+            Back to MileTally
           </Link>
           <h1 className="mt-8 text-4xl font-semibold tracking-tight sm:text-5xl">
             Terms of Service
           </h1>
-          <p className="mt-2 text-lg text-muted">{{APP_NAME}} — {{APP_TAGLINE}}</p>
-          <p className="mt-4 text-sm text-muted">Last updated: {{LAST_UPDATED}}</p>
+          <p className="mt-2 text-lg text-muted">MileTally — Track miles, cut your taxes</p>
+          <p className="mt-4 text-sm text-muted">Last updated: 2026-06-12</p>
         </FadeIn>
 
         <div className="mt-16 space-y-12 text-[15px] leading-[1.8] text-muted">
@@ -40,7 +33,7 @@ export default function {{APP_CLASS}}TermsPage() {
             <section>
               <h2 className="text-xl font-semibold text-foreground">Acceptance of Terms</h2>
               <p className="mt-4">
-                By downloading, installing, or using {{APP_NAME}} (&quot;the App&quot;),
+                By downloading, installing, or using MileTally (&quot;the App&quot;),
                 developed by FadiDev (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;),
                 you agree to be bound by these Terms of Service (&quot;Terms&quot;). If
                 you do not agree to these Terms, please do not use the App.
@@ -52,7 +45,7 @@ export default function {{APP_CLASS}}TermsPage() {
             <section>
               <h2 className="text-xl font-semibold text-foreground">Description of Service</h2>
               <p className="mt-4">
-                {{APP_NAME}} is {{APP_DESCRIPTION_LONG}}.{{IF_PREMIUM_DESCRIPTION}}
+                MileTally is A local-first iOS mileage-and-expense logbook for US self-employed and gig workers that turns every tap-to-log trip and imported earnings file into a live after-mileage net figure and an accountant-ready Schedule C summary.. Optional premium features are available as a one-time in-app purchase.
               </p>
             </section>
           </FadeIn>
@@ -61,7 +54,7 @@ export default function {{APP_CLASS}}TermsPage() {
             <section>
               <h2 className="text-xl font-semibold text-foreground">Use of the App</h2>
               <p className="mt-4">
-                You may use {{APP_NAME}} for personal, non-commercial purposes in
+                You may use MileTally for personal, non-commercial purposes in
                 accordance with these Terms and all applicable laws. You agree not to:
               </p>
               <ul className="mt-4 list-disc space-y-3 pl-6">
@@ -74,22 +67,24 @@ export default function {{APP_CLASS}}TermsPage() {
             </section>
           </FadeIn>
 
-          {{IF freemium}}
+          
           <FadeIn>
             <section>
               <h2 className="text-xl font-semibold text-foreground">Free and Premium Features</h2>
               <p className="mt-4">
-                {{APP_NAME}} offers core functionality for free. Certain advanced
+                MileTally offers core functionality for free. Certain advanced
                 features require a premium subscription:
               </p>
               <ul className="mt-4 list-disc space-y-3 pl-6">
-                {{PREMIUM_FEATURES_LIST_JSX}}
+                <li>Per-Platform P&amp;L Dashboard</li>
+                <li>CSV Earnings Import</li>
+                <li>Schedule C PDF Export</li>
               </ul>
             </section>
           </FadeIn>
-          {{/IF}}
+          
 
-          {{IF subscriptions}}
+          
           <FadeIn>
             <section>
               <h2 className="text-xl font-semibold text-foreground">Subscriptions and In-App Purchases</h2>
@@ -110,38 +105,14 @@ export default function {{APP_CLASS}}TermsPage() {
                   <strong className="text-foreground">Free Trials:</strong> If a free trial is offered, any unused portion of the trial will be forfeited when you purchase a subscription.
                 </li>
               </ul>
-              {{IF lifetime}}
-              <p className="mt-4">
-                {{APP_NAME}} also offers a one-time lifetime purchase option. Lifetime
-                purchases are non-renewing — once purchased, you retain access to Pro
-                features for the lifetime of the app, with no recurring charges.
-              </p>
-              {{/IF}}
+              
             </section>
           </FadeIn>
-          {{/IF}}
+          
 
-          {{IF lifetime_only}}
-          <FadeIn>
-            <section>
-              <h2 className="text-xl font-semibold text-foreground">In-App Purchase</h2>
-              <p className="mt-4">
-                {{APP_NAME}} offers premium features as a single one-time purchase
-                (no subscription, no recurring charges). The purchase is processed
-                entirely by Apple via the App Store; once completed, premium features
-                remain unlocked for the lifetime of the app on devices signed in to
-                your Apple ID.
-              </p>
-              <p className="mt-3">
-                Use &quot;Restore Purchases&quot; inside the app to re-activate your
-                purchase on a new device. Payment details are handled by Apple — we
-                never see or store them.
-              </p>
-            </section>
-          </FadeIn>
-          {{/IF}}
+          
 
-          {{IF refunds}}
+          
           <FadeIn>
             <section>
               <h2 className="text-xl font-semibold text-foreground">Refund Policy</h2>
@@ -156,32 +127,15 @@ export default function {{APP_CLASS}}TermsPage() {
               </p>
             </section>
           </FadeIn>
-          {{/IF}}
+          
 
-          {{IF third_party_services}}
-          <FadeIn>
-            <section>
-              <h2 className="text-xl font-semibold text-foreground">Third-Party Services</h2>
-              <p className="mt-4">
-                {{APP_NAME}} uses third-party services for specific functionality:
-              </p>
-              <ul className="mt-4 list-disc space-y-3 pl-6">
-                {{THIRD_PARTY_SERVICES_LIST_JSX}}
-              </ul>
-              <p className="mt-4">
-                These services have their own terms of service and privacy policies.
-                Your use of these services through {{APP_NAME}} is subject to their
-                respective terms.
-              </p>
-            </section>
-          </FadeIn>
-          {{/IF}}
+          
 
           <FadeIn>
             <section>
               <h2 className="text-xl font-semibold text-foreground">Intellectual Property</h2>
               <p className="mt-4">
-                All content, features, and functionality of {{APP_NAME}} — including
+                All content, features, and functionality of MileTally — including
                 but not limited to text, graphics, logos, icons, images, and software —
                 are the exclusive property of FadiDev and are protected by international
                 copyright, trademark, and other intellectual property laws.
@@ -193,7 +147,7 @@ export default function {{APP_CLASS}}TermsPage() {
             <section>
               <h2 className="text-xl font-semibold text-foreground">Disclaimer of Warranties</h2>
               <p className="mt-4">
-                {{APP_NAME}} is provided &quot;as is&quot; and &quot;as available&quot;
+                MileTally is provided &quot;as is&quot; and &quot;as available&quot;
                 without warranties of any kind, either express or implied. We do not
                 warrant that the App will be uninterrupted, error-free, or free of
                 harmful components.
@@ -209,7 +163,7 @@ export default function {{APP_CLASS}}TermsPage() {
                 liable for any indirect, incidental, special, consequential, or punitive
                 damages, or any loss of profits or revenues, whether incurred directly
                 or indirectly, or any loss of data, use, or goodwill arising out of your
-                use of {{APP_NAME}}.
+                use of MileTally.
               </p>
             </section>
           </FadeIn>
