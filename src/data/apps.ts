@@ -32,6 +32,26 @@ export const apps: AppInfo[] = [
     ],
   },
   {
+    slug: "quietnights",
+    name: "QuietNights",
+    tagline: "Nursery noise & sleep monitor",
+    description:
+      "A calm, on-device nursery sound monitor that brackets each nap or night into a session and hands you a plain-language morning verdict on whether noise threatened your baby's sleep.",
+    iconColor: "#D97706",
+    features: [
+      "Live decibel reading with a soft breathing gauge that dims for the nightstand",
+      "Pediatric threshold presets (AAP safe-sleep, hearing-safe) or a custom limit",
+      "Silent log entry the instant noise crosses your line — no chime that wakes the baby",
+      "Morning Report Card — a color-coded verdict with quiet hours, spikes, and peak dB",
+      "White-noise spot-check: a guided 10-second test against a 65 dB ceiling",
+      "Night history and 7- & 30-night trend charts (Pro)",
+      "Weekly insights and night-over-night comparison (Pro)",
+      "iCloud sync across your devices (Pro)",
+      "Shareable PDF reports for a partner or pediatrician (Pro)",
+      "Privacy-first: on-device only, no account, no audio ever recorded",
+    ],
+  },
+  {
     slug: "miletally",
     name: "MileTally",
     tagline: "Track miles, cut your taxes",
