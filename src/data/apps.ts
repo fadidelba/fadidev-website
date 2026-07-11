@@ -11,6 +11,25 @@ export interface AppInfo {
 
 export const apps: AppInfo[] = [
   {
+    slug: "knightgrid",
+    name: "Knight Grid",
+    tagline: "Solve the Knight's Tour",
+    description:
+      "Master the Knight's Tour — the centuries-old chess puzzle where a lone knight must land on every square of the board exactly once. Three ways to play, boards from 5×5 to 10×10, fully offline.",
+    iconColor: "#149a57",
+    features: [
+      "Puzzle mode — solve it yourself with instant feedback and unlimited undo",
+      "Mission mode — beat the clock across three rounds, from 6×6 to 8×8",
+      "Solution mode — watch the solver reveal a perfect path step by step, at any speed",
+      "Any board from 5×5 up to 10×10, any starting square",
+      "No ads, no accounts, no tracking — works fully offline",
+      "Light and dark themes",
+      "Accessible: Dynamic Type and VoiceOver",
+      "7 languages supported",
+    ],
+    appStoreUrl: "https://apps.apple.com/app/id6759575829",
+  },
+  {
     slug: "qrisp",
     name: "Qrisp",
     tagline: "Premium QR & Barcode Scanner",
