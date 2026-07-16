@@ -17,22 +17,25 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-header-bg backdrop-blur-xl">
       <div
-        className={`mx-auto flex max-w-5xl items-center justify-between px-6 py-4 transition-[border-color] duration-300 border-b ${
+        className={`mx-auto flex max-w-6xl items-center justify-between px-6 py-4 transition-[border-color] duration-300 border-b ${
           scrolled ? "border-border" : "border-transparent"
         }`}
       >
         <Link
           href="/"
-          className="text-lg font-semibold tracking-tight text-foreground transition-opacity hover:opacity-70"
+          className="font-display text-[17px] font-bold tracking-tight text-foreground transition-opacity hover:opacity-70"
         >
           FadiDev
+          <span className="ml-1.5 align-middle text-[9px] font-medium tracking-[0.14em] text-muted">
+            APP STUDIO
+          </span>
         </Link>
         <nav className="flex items-center gap-6">
           <Link
-            href="/"
+            href="/#apps"
             className="text-sm text-muted transition-colors hover:text-foreground"
           >
-            Home
+            Apps
           </Link>
           <Link
             href="/support"

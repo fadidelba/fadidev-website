@@ -1,6 +1,9 @@
+import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { apps } from "@/data/apps";
-import { AppStoreBadge, PlayStoreBadge } from "@/components/StoreBadges";
+import AppGlyph from "@/components/AppGlyph";
+import { AppStoreButton, InDevelopmentTag } from "@/components/StoreBadges";
 import FadeIn from "@/components/FadeIn";
 import type { Metadata } from "next";
 
@@ -30,73 +33,144 @@ export default async function AppPage({ params }: Props) {
   const app = apps.find((a) => a.slug === slug);
   if (!app) notFound();
 
+  const shots = Array.from({ length: app.screenshots ?? 0 }, (_, i) => i + 1);
+
   return (
-    <div className="px-6 pt-36 pb-24">
-      <div className="mx-auto max-w-3xl">
-        {/* Hero */}
-        <FadeIn>
-          <div className="flex flex-col items-center text-center">
+    <div
+      className="app-world"
+      style={{ "--app": app.iconColor } as React.CSSProperties}
+    >
+      {/* Hero in the app's color world */}
+      <section
+        className="border-b px-6 pt-36 pb-16 sm:pb-20"
+        style={{ background: "var(--app-tint)", borderColor: "var(--app-line)" }}
+      >
+        <div className="mx-auto max-w-4xl">
+          <Link
+            href="/"
+            className="spec-label inline-flex items-center gap-1.5 text-muted transition-colors hover:text-foreground"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+            FadiDev
+          </Link>
+
+          <div className="group mt-10 flex items-center gap-5">
             <div
-              className="h-28 w-28 rounded-[1.75rem] shadow-lg"
-              style={{ backgroundColor: app.iconColor || "#d4a574" }}
-            />
-            <h1 className="mt-8 text-4xl font-semibold tracking-tight sm:text-5xl">
-              {app.name}
-            </h1>
-            <p className="mt-4 text-lg text-muted">{app.tagline}</p>
-            <p className="mt-6 max-w-lg text-base leading-relaxed text-muted">
-              {app.description}
-            </p>
-            <div className="mt-8 flex gap-4">
-              <AppStoreBadge url={app.appStoreUrl} />
-              <PlayStoreBadge url={app.playStoreUrl} />
+              className="flex h-[72px] w-[72px] items-center justify-center rounded-[22px] border"
+              style={{
+                background: "var(--app-tint-strong)",
+                borderColor: "var(--app-line)",
+                color: "var(--app-tone)",
+              }}
+            >
+              <AppGlyph slug={app.slug} className="h-9 w-9" />
+            </div>
+            <div>
+              <h1 className="font-display text-3xl font-bold tracking-tight sm:text-5xl">
+                {app.name}
+              </h1>
+              <p className="mt-1 text-base text-muted sm:text-lg">{app.tagline}</p>
             </div>
           </div>
-        </FadeIn>
 
-        {/* Screenshots */}
-        <FadeIn>
-          <section className="mt-24">
-            <h2 className="text-center text-2xl font-semibold tracking-tight">
-              Screenshots
-            </h2>
-            <div className="mt-10 flex gap-5 overflow-x-auto pb-4">
-              {[1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  className="flex h-[420px] w-[210px] flex-shrink-0 items-center justify-center rounded-3xl border border-border bg-card-bg text-sm text-muted"
-                >
-                  Screenshot {i}
-                </div>
-              ))}
-            </div>
-          </section>
-        </FadeIn>
+          <p className="mt-8 max-w-[52ch] text-[15px] leading-relaxed text-muted sm:text-base">
+            {app.description}
+          </p>
 
-        {/* Features */}
-        <section className="mt-24">
+          <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2">
+            {app.specs.map((s) => (
+              <span key={s} className="spec-label" style={{ color: "var(--app-tone)" }}>
+                {s}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-9">
+            {app.status === "live" ? (
+              <AppStoreButton url={app.appStoreUrl} size="lg" />
+            ) : (
+              <InDevelopmentTag />
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Real screenshots, only when we have them */}
+      {shots.length > 0 && (
+        <section className="px-6 py-16">
+          <div className="mx-auto max-w-4xl">
+            <FadeIn>
+              <div className="flex flex-wrap justify-center gap-6">
+                {shots.map((n) => (
+                  <div
+                    key={n}
+                    className="w-[240px] overflow-hidden rounded-[22px] border shadow-lg"
+                    style={{ borderColor: "var(--app-line)" }}
+                  >
+                    <Image
+                      src={`/apps/${app.slug}/${n}.png`}
+                      alt={`${app.name} screenshot ${n}`}
+                      width={405}
+                      height={880}
+                      className="block h-auto w-full"
+                    />
+                  </div>
+                ))}
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+      )}
+
+      {/* Features */}
+      <section className="px-6 py-16">
+        <div className="mx-auto max-w-4xl">
           <FadeIn>
-            <h2 className="text-center text-2xl font-semibold tracking-tight">
-              Features
-            </h2>
+            <h2 className="spec-label text-muted">What it does</h2>
           </FadeIn>
-          <div className="mt-10 space-y-4">
+          <div className="mt-8 grid gap-x-10 gap-y-5 sm:grid-cols-2">
             {app.features.map((feature, i) => (
-              <FadeIn key={i} delay={i * 0.05}>
-                <div className="flex items-start gap-4 rounded-2xl border border-border bg-card-bg p-6 transition-colors hover:bg-card-hover">
-                  <span className="mt-0.5 text-accent">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <FadeIn key={i} delay={Math.min(i * 0.04, 0.3)}>
+                <div className="flex items-start gap-3.5">
+                  <span className="mt-[3px] shrink-0" style={{ color: "var(--app-tone)" }}>
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </span>
-                  <span className="text-sm leading-relaxed">{feature}</span>
+                  <span className="text-sm leading-relaxed text-muted">{feature}</span>
                 </div>
               </FadeIn>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-      </div>
+      {/* Trust line */}
+      <section className="px-6 pb-20">
+        <div className="mx-auto max-w-4xl">
+          <FadeIn>
+            <div
+              className="flex flex-col gap-4 rounded-[22px] border p-7 sm:flex-row sm:items-center sm:justify-between"
+              style={{ background: "var(--app-tint)", borderColor: "var(--app-line)" }}
+            >
+              <p className="text-sm leading-relaxed text-muted">
+                Questions about {app.name}? One person builds it, and the same
+                person answers.
+              </p>
+              <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">
+                <Link href="/support" className="underline decoration-border-strong underline-offset-4 transition-colors hover:decoration-current">
+                  Support
+                </Link>
+                <Link href={`/apps/${app.slug}/privacy`} className="underline decoration-border-strong underline-offset-4 transition-colors hover:decoration-current">
+                  Privacy
+                </Link>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
     </div>
   );
 }
