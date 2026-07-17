@@ -1,49 +1,65 @@
 @import "tailwindcss";
 
+/* ————————————————————————————————————————————————
+   FadiDev tokens — the studio is monochrome paper/ink;
+   every drop of color belongs to an app.
+   ———————————————————————————————————————————————— */
 :root {
-  --background: #faf9f7;
-  --background-secondary: #f3f0ec;
-  --foreground: #1a1a1a;
-  --muted: #6b6560;
-  --accent: #d4714e;
-  --accent-hover: #c2603e;
-  --border: #e8e4de;
-  --card-bg: #ffffff;
-  --card-hover: #fdfcfa;
-  --header-bg: rgba(250, 249, 247, 0.8);
-  --gradient-from: #faf9f7;
-  --gradient-to: #f0ebe4;
+  --background: #f5f5f2;
+  --background-raised: #fdfdfc;
+  --foreground: #1b1c1e;
+  --muted: #62646a;
+  --faint: #9a9b9f;
+  --border: #e0e0da;
+  --border-strong: #c9c9c2;
+  --header-bg: rgba(245, 245, 242, 0.85);
+  /* legacy aliases still used by inner pages */
+  --background-secondary: #eeeee9;
+  --accent: #1b1c1e;
+  --accent-hover: #454549;
+  --card-bg: #fdfdfc;
+  --card-hover: #f8f8f5;
+  --gradient-from: #f5f5f2;
+  --gradient-to: #eeeee9;
 }
 
 .dark {
-  --background: #1a1a1a;
-  --background-secondary: #242424;
-  --foreground: #e5e5e5;
-  --muted: #999490;
-  --accent: #d4714e;
-  --accent-hover: #e07e5a;
-  --border: #2e2e2e;
-  --card-bg: #242424;
-  --card-hover: #2a2a2a;
-  --header-bg: rgba(26, 26, 26, 0.8);
-  --gradient-from: #1a1a1a;
-  --gradient-to: #1f1d1b;
+  --background: #141517;
+  --background-raised: #1c1d20;
+  --foreground: #ebece8;
+  --muted: #a0a19d;
+  --faint: #6e6f6b;
+  --border: #292a2d;
+  --border-strong: #3a3b3f;
+  --header-bg: rgba(20, 21, 23, 0.85);
+  --background-secondary: #1c1d20;
+  --accent: #ebece8;
+  --accent-hover: #c9cac6;
+  --card-bg: #1c1d20;
+  --card-hover: #212226;
+  --gradient-from: #141517;
+  --gradient-to: #1a1b1e;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-raised: var(--background-raised);
   --color-background-secondary: var(--background-secondary);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
+  --color-faint: var(--faint);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-card-bg: var(--card-bg);
   --color-card-hover: var(--card-hover);
   --color-header-bg: var(--header-bg);
   --color-gradient-from: var(--gradient-from);
   --color-gradient-to: var(--gradient-to);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
 }
 
 html {
@@ -53,10 +69,123 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+  font-feature-settings: "ss01";
 }
 
 ::selection {
-  background: var(--accent);
-  color: #ffffff;
+  background: var(--foreground);
+  color: var(--background);
+}
+
+/* ————————————————————————————————————————————————
+   App color worlds. --app is set inline per card/page;
+   everything else is derived, so light & dark both work.
+   ———————————————————————————————————————————————— */
+.app-world {
+  --app-tint: color-mix(in oklab, var(--app) 9%, var(--background));
+  --app-tint-strong: color-mix(in oklab, var(--app) 16%, var(--background));
+  --app-line: color-mix(in oklab, var(--app) 28%, var(--border));
+  --app-tone: color-mix(in oklab, var(--app) 72%, var(--foreground));
+}
+.dark .app-world,
+.dark.app-world {
+  --app-tint: color-mix(in oklab, var(--app) 13%, var(--background));
+  --app-tint-strong: color-mix(in oklab, var(--app) 22%, var(--background));
+  --app-line: color-mix(in oklab, var(--app) 34%, var(--border));
+  --app-tone: color-mix(in oklab, var(--app) 62%, var(--foreground));
+}
+
+/* ————————————————————————————————————————————————
+   Type helpers
+   ———————————————————————————————————————————————— */
+.font-display {
+  font-family: var(--font-display), var(--font-body), sans-serif;
+}
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+.spec-label {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ————————————————————————————————————————————————
+   Load choreography: hero elements rise once, in order.
+   ———————————————————————————————————————————————— */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise {
+  animation: rise 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.rise-1 { animation-delay: 0.05s; }
+.rise-2 { animation-delay: 0.14s; }
+.rise-3 { animation-delay: 0.23s; }
+.rise-4 { animation-delay: 0.32s; }
+.rise-5 { animation-delay: 0.41s; }
+
+/* Knight replays its L-shaped move into the landing square: over, then up. */
+@keyframes knight-hop {
+  0%   { transform: translate(-7px, 7px); }
+  45%  { transform: translate(0, 7px); }
+  100% { transform: translate(0, 0); }
+}
+.group:hover .knight-piece {
+  animation: knight-hop 0.6s cubic-bezier(0.34, 1.2, 0.64, 1) both;
+}
+
+/* Qrisp scanline sweep */
+@keyframes scan {
+  0%   { transform: translateY(0); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateY(13px); opacity: 0; }
+}
+.group:hover .scan-line {
+  animation: scan 0.9s ease-in-out forwards;
+}
+
+/* QuietNights sound bars settle down to sleep */
+@keyframes settle {
+  from { transform: scaleY(1); }
+  to   { transform: scaleY(0.35); }
+}
+.group:hover .settle-bar {
+  animation: settle 0.6s ease-out forwards;
+  transform-origin: bottom;
+}
+
+/* MileTally speedometer needle sweeps up */
+@keyframes sweep {
+  from { transform: rotate(0deg); }
+  60%  { transform: rotate(74deg); }
+  to   { transform: rotate(64deg); }
+}
+.group:hover .needle {
+  animation: sweep 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  transform-origin: 14px 18.5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .rise,
+  .group:hover .knight-piece,
+  .group:hover .scan-line,
+  .group:hover .settle-bar,
+  .group:hover .needle {
+    animation: none;
+  }
 }

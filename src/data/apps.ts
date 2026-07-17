@@ -4,7 +4,10 @@ export interface AppInfo {
   tagline: string;
   description: string;
   iconColor: string;
+  status: "live" | "in-development";
+  specs: string[]; // short true facts, rendered as mono labels
   features: string[];
+  screenshots?: number; // count of files in /public/apps/<slug>/{1..n}.png
   appStoreUrl?: string;
   playStoreUrl?: string;
 }
@@ -17,6 +20,8 @@ export const apps: AppInfo[] = [
     description:
       "Master the Knight's Tour — the centuries-old chess puzzle where a lone knight must land on every square of the board exactly once. Three ways to play, boards from 5×5 to 10×10, fully offline.",
     iconColor: "#149a57",
+    status: "live",
+    specs: ["iOS", "€1.99 once", "offline", "7 languages"],
     features: [
       "Puzzle mode — solve it yourself with instant feedback and unlimited undo",
       "Mission mode — beat the clock across three rounds, from 6×6 to 8×8",
@@ -27,6 +32,7 @@ export const apps: AppInfo[] = [
       "Accessible: Dynamic Type and VoiceOver",
       "7 languages supported",
     ],
+    screenshots: 3,
     appStoreUrl: "https://apps.apple.com/app/id6759575829",
   },
   {
@@ -36,6 +42,8 @@ export const apps: AppInfo[] = [
     description:
       "Scan and create QR codes and barcodes with ease. Qrisp instantly recognizes URLs, WiFi networks, contacts, and more — all while keeping your data private and on-device.",
     iconColor: "#22C997",
+    status: "in-development",
+    specs: ["iOS", "on-device", "14 languages"],
     features: [
       "Scan QR codes and barcodes instantly with your camera",
       "Auto-detect URLs, WiFi, contacts, emails, phone numbers, and more",
@@ -57,6 +65,8 @@ export const apps: AppInfo[] = [
     description:
       "A calm, on-device nursery sound monitor that brackets each nap or night into a session and hands you a plain-language morning verdict on whether noise threatened your baby's sleep.",
     iconColor: "#D97706",
+    status: "in-development",
+    specs: ["iOS", "on-device", "no audio recorded"],
     features: [
       "Live decibel reading with a soft breathing gauge that dims for the nightstand",
       "Pediatric threshold presets (AAP safe-sleep, hearing-safe) or a custom limit",
@@ -77,6 +87,8 @@ export const apps: AppInfo[] = [
     description:
       "A local-first iOS mileage-and-expense logbook for US self-employed and gig workers that turns every tap-to-log trip and imported earnings file into a live after-mileage net figure and an accountant-ready Schedule C summary.",
     iconColor: "#2E7D4F",
+    status: "in-development",
+    specs: ["iOS", "local-first", "Schedule C export"],
     features: [
       "One-Tap Trip Logging",
       "Swipe Classifier",
