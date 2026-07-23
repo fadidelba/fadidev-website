@@ -25,7 +25,7 @@ export default function MiletallyTermsPage() {
             Terms of Service
           </h1>
           <p className="mt-2 text-lg text-muted">MileTally — Track miles, cut your taxes</p>
-          <p className="mt-4 text-sm text-muted">Last updated: 2026-06-12</p>
+          <p className="mt-4 text-sm text-muted">Last updated: 2026-07-23</p>
         </FadeIn>
 
         <div className="mt-16 space-y-12 text-[15px] leading-[1.8] text-muted">
@@ -45,7 +45,30 @@ export default function MiletallyTermsPage() {
             <section>
               <h2 className="text-xl font-semibold text-foreground">Description of Service</h2>
               <p className="mt-4">
-                MileTally is A local-first iOS mileage-and-expense logbook for US self-employed and gig workers that turns every tap-to-log trip and imported earnings file into a live after-mileage net figure and an accountant-ready Schedule C summary.. Optional premium features are available as a one-time in-app purchase.
+                MileTally is a local-first iOS mileage-and-expense logbook for US
+                self-employed and gig workers. It turns every tap-to-log trip and
+                imported earnings file into a live after-mileage net figure and an
+                accountant-ready Schedule C summary. Optional premium features are
+                available as a subscription or a one-time purchase.
+              </p>
+            </section>
+          </FadeIn>
+
+          <FadeIn>
+            <section>
+              <h2 className="text-xl font-semibold text-foreground">Not Tax Advice</h2>
+              <p className="mt-4">
+                MileTally produces estimates and summary documents to help you organize
+                your records. It is <strong className="text-foreground">not tax advice</strong>,
+                and it does not file anything with the IRS — there is no e-filing and no
+                automatic submission. The Schedule C summary and mileage log are reference
+                documents to hand to a CPA or use while self-filing.
+              </p>
+              <p className="mt-3">
+                The IRS standard mileage rate is applied per trip using the rate in effect
+                on the day that trip was driven. We update those rates as the IRS publishes
+                them, but you remain responsible for confirming the current figures and
+                your own tax situation with a qualified tax professional.
               </p>
             </section>
           </FadeIn>
@@ -67,52 +90,57 @@ export default function MiletallyTermsPage() {
             </section>
           </FadeIn>
 
-          
           <FadeIn>
             <section>
               <h2 className="text-xl font-semibold text-foreground">Free and Premium Features</h2>
               <p className="mt-4">
-                MileTally offers core functionality for free. Certain advanced
-                features require a premium subscription:
+                MileTally&apos;s core loop is free and stays free: unlimited trip logging,
+                unlimited expenses, your live IRS mileage deduction, and classification on
+                up to two platforms. There is no trip cap and no monthly reset.
               </p>
+              <p className="mt-3">These features require MileTally Pro:</p>
               <ul className="mt-4 list-disc space-y-3 pl-6">
-                <li>Per-Platform P&amp;L Dashboard</li>
-                <li>CSV Earnings Import</li>
-                <li>Schedule C PDF Export</li>
+                <li>Unlimited platforms and the per-platform P&amp;L dashboard</li>
+                <li>CSV earnings import</li>
+                <li>Schedule C PDF export and the detailed mileage log</li>
+                <li>Quarterly estimated-tax reminders</li>
               </ul>
             </section>
           </FadeIn>
-          
 
-          
           <FadeIn>
             <section>
               <h2 className="text-xl font-semibold text-foreground">Subscriptions and In-App Purchases</h2>
               <p className="mt-4">
-                By purchasing a subscription, you agree to the following:
+                MileTally Pro is sold three ways. The price and the renewal terms are
+                always shown in the app before a purchase is confirmed.
               </p>
               <ul className="mt-4 list-disc space-y-3 pl-6">
+                <li><strong className="text-foreground">Monthly:</strong> $1.99 per month, auto-renewable</li>
+                <li><strong className="text-foreground">Annual:</strong> $14.99 per year, auto-renewable</li>
+                <li><strong className="text-foreground">Lifetime:</strong> $29.99, a one-time purchase — nothing renews and there is nothing to cancel</li>
+              </ul>
+              <p className="mt-4">By purchasing, you agree to the following:</p>
+              <ul className="mt-4 list-disc space-y-3 pl-6">
                 <li>
-                  <strong className="text-foreground">Auto-Renewal:</strong> Subscriptions automatically renew at the end of each billing period unless you cancel at least 24 hours before the renewal date.
+                  <strong className="text-foreground">Auto-Renewal:</strong> A subscription automatically renews at the end of each billing period unless you cancel at least 24 hours before the renewal date. This does not apply to the Lifetime purchase.
                 </li>
                 <li>
-                  <strong className="text-foreground">Billing:</strong> Payment is charged to your Apple ID account at confirmation of purchase. Your account will be charged for renewal within 24 hours prior to the end of the current period.
+                  <strong className="text-foreground">Billing:</strong> Payment is charged to your Apple ID account at confirmation of purchase. For subscriptions, your account is charged for renewal within 24 hours prior to the end of the current period.
                 </li>
                 <li>
-                  <strong className="text-foreground">Cancellation:</strong> You can manage and cancel your subscriptions through your device settings: Settings → Apple ID → Subscriptions.
+                  <strong className="text-foreground">Cancellation:</strong> You can manage and cancel subscriptions through your device settings: Settings → Apple ID → Subscriptions.
                 </li>
                 <li>
-                  <strong className="text-foreground">Free Trials:</strong> If a free trial is offered, any unused portion of the trial will be forfeited when you purchase a subscription.
+                  <strong className="text-foreground">No hidden trials:</strong> MileTally does not offer a free trial that converts into a charge. You pay the stated price at purchase, or you keep using the free tier.
+                </li>
+                <li>
+                  <strong className="text-foreground">Restore:</strong> A previous purchase can be restored on a new device from the paywall or from Settings.
                 </li>
               </ul>
-              
             </section>
           </FadeIn>
-          
 
-          
-
-          
           <FadeIn>
             <section>
               <h2 className="text-xl font-semibold text-foreground">Refund Policy</h2>

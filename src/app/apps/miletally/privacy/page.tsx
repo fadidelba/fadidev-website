@@ -25,7 +25,7 @@ export default function MiletallyPrivacyPage() {
             Privacy Policy
           </h1>
           <p className="mt-2 text-lg text-muted">MileTally — Track miles, cut your taxes</p>
-          <p className="mt-4 text-sm text-muted">Last updated: 2026-06-12</p>
+          <p className="mt-4 text-sm text-muted">Last updated: 2026-07-23</p>
         </FadeIn>
 
         <div className="mt-16 space-y-12 text-[15px] leading-[1.8] text-muted">
@@ -83,22 +83,44 @@ export default function MiletallyPrivacyPage() {
 
           
 
-          
+          <FadeIn>
+            <section>
+              <h2 className="text-xl font-semibold text-foreground">Location</h2>
+              <p className="mt-4">
+                MileTally uses your location <strong className="text-foreground">only while
+                the app is open and only while you are recording a trip</strong> — you start
+                every recording yourself by tapping START. The app requests
+                &quot;When In Use&quot; access. It never uses background or always-on
+                location, and it does not track you between trips.
+              </p>
+              <p className="mt-3">
+                Location readings serve exactly one purpose: computing the distance of
+                the trip you are recording. That distance is saved with the trip. The
+                underlying coordinates are not stored, not exported, and never leave your
+                device — nothing is sent to us or to any third party.
+              </p>
+              <p className="mt-3">
+                If you deny location access, MileTally stays fully usable: enter your
+                odometer readings or the distance by hand instead.
+              </p>
+            </section>
+          </FadeIn>
+
           <FadeIn>
             <section>
               <h2 className="text-xl font-semibold text-foreground">Subscriptions and Purchases</h2>
               <p className="mt-4">
-                MileTally offers optional premium features via in-app subscriptions,
-                handled entirely by Apple&apos;s native StoreKit. Subscription status is
-                determined on-device by querying StoreKit; we use no third-party
-                subscription SDKs. Payment details are handled entirely by Apple
-                (App Store) — we never have access to your payment information.
+                MileTally Pro is available as a monthly or annual auto-renewable
+                subscription, or as a one-time Lifetime purchase. All three are handled
+                entirely by Apple&apos;s native StoreKit. Entitlement status is determined
+                on-device by querying StoreKit; we use no third-party subscription SDKs.
+                Payment details are handled entirely by Apple (App Store) — we never have
+                access to your payment information.
               </p>
             </section>
           </FadeIn>
-          
 
-          
+
 
           <FadeIn>
             <section>
@@ -109,7 +131,7 @@ export default function MiletallyPrivacyPage() {
                 <li>Crash reports or performance metrics</li>
                 <li>Advertising identifiers (IDFA/GAID)</li>
                 <li>Device identifiers sent to any server</li>
-                <li>Location data (unless explicitly listed above)</li>
+                <li>Location data sent to any server — your coordinates never leave your device (see &quot;Location&quot; above)</li>
                 <li>Contact information</li>
                 <li>Biometric data</li>
               </ul>
