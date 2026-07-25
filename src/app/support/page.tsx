@@ -1,171 +1,103 @@
 import type { Metadata } from "next";
-import FadeIn from "@/components/FadeIn";
 
 export const metadata: Metadata = {
   title: "Support",
   description:
-    "Get help with FadiDev apps. Contact us or browse frequently asked questions.",
+    "Get help with FadiDev apps. One person builds them, and the same person answers.",
 };
 
 const faqs = [
   {
-    question: "How do I cancel my subscription?",
+    question: "How do I cancel a subscription?",
     answer: (
-      <>
-        <p>
-          Subscriptions are managed through your device&apos;s app store, not
-          within our apps directly.
-        </p>
-        <p className="mt-3">
-          <strong className="text-foreground">On iOS:</strong> Open Settings &rarr; tap your name (Apple ID)
-          &rarr; Subscriptions &rarr; select the app &rarr; Cancel Subscription.
-        </p>
-        <p className="mt-3">
-          <strong className="text-foreground">On Android:</strong> Open the Google Play Store &rarr; tap your
-          profile icon &rarr; Payments &amp; subscriptions &rarr; Subscriptions
-          &rarr; select the app &rarr; Cancel subscription.
-        </p>
-      </>
+      <p>
+        Subscriptions are managed by Apple, not inside the app. Open Settings
+        &rarr; tap your name &rarr; Subscriptions &rarr; select the app &rarr;
+        Cancel Subscription.
+      </p>
     ),
   },
   {
-    question: "How do I restore my purchase?",
+    question: "How do I restore a purchase?",
     answer: (
-      <>
-        <p>
-          If you previously purchased a subscription or in-app purchase and it
-          is not showing up:
-        </p>
-        <p className="mt-3">
-          <strong className="text-foreground">On iOS:</strong> Make sure you are signed in with the same
-          Apple ID you used for the original purchase. Most apps have a
-          &quot;Restore Purchases&quot; button in the settings or paywall screen.
-        </p>
-        <p className="mt-3">
-          <strong className="text-foreground">On Android:</strong> Make sure you are signed in with the same
-          Google account. Try tapping &quot;Restore Purchases&quot; in the app, or
-          reinstall the app.
-        </p>
-      </>
+      <p>
+        Make sure you&apos;re signed in with the same Apple ID you bought it
+        with, then tap &quot;Restore Purchases&quot; in the app&apos;s settings.
+        If it still doesn&apos;t show up, email me.
+      </p>
     ),
   },
   {
-    question: "The app is not working. What should I do?",
+    question: "Something is broken. What should I do?",
     answer: (
-      <>
-        <p>Try the following steps:</p>
-        <ol className="mt-3 list-decimal space-y-2 pl-6">
-          <li>Make sure you have the latest version of the app installed.</li>
-          <li>Restart the app by closing it completely and reopening it.</li>
-          <li>Restart your device.</li>
-          <li>
-            If the issue persists, please contact us at{" "}
-            <a href="mailto:support@fadidev.app" className="text-accent hover:underline">
-              support@fadidev.app
-            </a>{" "}
-            with a description of the problem, your device model, and OS version.
-          </li>
-        </ol>
-      </>
+      <p>
+        Check that you have the latest version, then force-quit the app and
+        reopen it. If it&apos;s still broken, email me what happened, your
+        device model, and your iOS version — I read every report, and bugs from
+        these emails usually get fixed in the next update.
+      </p>
     ),
   },
   {
     question: "How do I request a refund?",
     answer: (
-      <>
-        <p>Refunds are handled by the platform where you made the purchase:</p>
-        <p className="mt-3">
-          <strong className="text-foreground">On iOS:</strong> Visit{" "}
-          <a
-            href="https://reportaproblem.apple.com"
-            className="text-accent hover:underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            reportaproblem.apple.com
-          </a>{" "}
-          and sign in with your Apple ID to request a refund.
-        </p>
-        <p className="mt-3">
-          <strong className="text-foreground">On Android:</strong> Open the Google Play Store &rarr; tap
-          your profile icon &rarr; Payments &amp; subscriptions &rarr; Budget
-          &amp; order history &rarr; find the order and request a refund.
-        </p>
-      </>
+      <p>
+        Refunds go through Apple: sign in at{" "}
+        <a
+          href="https://reportaproblem.apple.com"
+          className="text-foreground underline underline-offset-4 hover:decoration-current"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          reportaproblem.apple.com
+        </a>{" "}
+        and pick the purchase. Apple decides, but they&apos;re usually
+        reasonable about it.
+      </p>
     ),
   },
   {
     question: "How do I delete my data?",
     answer: (
-      <>
-        <p>
-          We collect minimal data. If you would like to request the deletion of
-          any data associated with your use of our apps, please send an email to{" "}
-          <a href="mailto:support@fadidev.app" className="text-accent hover:underline">
-            support@fadidev.app
-          </a>{" "}
-          with the subject line &quot;Data Deletion Request.&quot; We will process your
-          request promptly.
-        </p>
-        <p className="mt-3">
-          Uninstalling the app will remove all locally stored data from your
-          device.
-        </p>
-      </>
+      <p>
+        Delete the app. That&apos;s genuinely it — everything lives on your
+        device, so uninstalling removes all of it. There&apos;s no account to
+        close and no server copy to chase down.
+      </p>
     ),
   },
 ];
 
 export default function SupportPage() {
   return (
-    <div className="px-6 pt-36 pb-24">
-      <div className="mx-auto max-w-3xl">
-        <FadeIn>
-          <h1 className="text-center text-4xl font-semibold tracking-tight sm:text-5xl">
-            Support
-          </h1>
-          <p className="mt-4 text-center text-lg text-muted">
-            Need help? We&apos;re here for you.
-          </p>
-        </FadeIn>
+    <div className="px-6 pt-20 pb-24 sm:pt-24">
+      <div className="mx-auto max-w-6xl">
+        <h1 className="rise rise-1 font-display text-[clamp(2.2rem,5vw,3.6rem)] font-bold leading-[1.05] tracking-tight">
+          Support
+        </h1>
+        <p className="rise rise-2 mt-6 max-w-[52ch] text-lg leading-relaxed text-muted">
+          One person builds these apps, and the same person answers. Email{" "}
+          <a
+            href="mailto:support@fadidev.app"
+            className="text-foreground underline underline-offset-4 hover:decoration-current"
+          >
+            support@fadidev.app
+          </a>{" "}
+          — I usually reply within a day or two.
+        </p>
 
-        {/* Contact */}
-        <FadeIn delay={0.1}>
-          <div className="mt-14 rounded-3xl border border-border bg-card-bg p-10 text-center">
-            <h2 className="text-xl font-semibold">Contact Us</h2>
-            <p className="mt-3 text-sm text-muted">
-              For any questions, issues, or feedback, reach out to us at:
-            </p>
-            <a
-              href="mailto:support@fadidev.app"
-              className="mt-4 inline-block text-lg font-medium text-accent hover:underline"
-            >
-              support@fadidev.app
-            </a>
-            <p className="mt-3 text-xs text-muted">
-              We typically respond within 24 &ndash; 48 hours.
-            </p>
-          </div>
-        </FadeIn>
-
-        {/* FAQ */}
-        <div className="mt-24">
-          <FadeIn>
-            <h2 className="text-center text-2xl font-semibold tracking-tight sm:text-3xl">
-              Frequently Asked Questions
-            </h2>
-          </FadeIn>
-          <div className="mt-10 space-y-5">
-            {faqs.map((faq, i) => (
-              <FadeIn key={i} delay={i * 0.05}>
-                <div className="rounded-2xl border border-border bg-card-bg p-8 transition-colors hover:bg-card-hover">
-                  <h3 className="text-base font-semibold">{faq.question}</h3>
-                  <div className="mt-4 text-[15px] leading-[1.8] text-muted">
-                    {faq.answer}
-                  </div>
+        <div className="rise rise-3 mt-16 max-w-3xl">
+          <h2 className="prompt">cat faq.txt</h2>
+          <div className="mt-6">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="border-t border-border py-7">
+                <h3 className="text-base font-semibold">{faq.question}</h3>
+                <div className="mt-3 max-w-[65ch] text-[15px] leading-relaxed text-muted">
+                  {faq.answer}
                 </div>
-              </FadeIn>
+              </div>
             ))}
+            <div className="border-t border-border" />
           </div>
         </div>
       </div>

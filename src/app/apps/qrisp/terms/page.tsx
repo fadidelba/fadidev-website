@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function QrispTermsPage() {
   return (
-    <div className="px-6 pt-36 pb-24">
+    <div className="px-6 pt-16 pb-24">
       <div className="mx-auto max-w-3xl">
         <FadeIn>
           <Link

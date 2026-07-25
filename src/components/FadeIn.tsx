@@ -1,23 +1,13 @@
-"use client";
-
-import { motion } from "framer-motion";
-
-interface FadeInProps {
+// ponytail: motion is earned — the uniform scroll fade-in was the biggest
+// "AI-generated" tell, so FadeIn is now a plain wrapper. Kept so legal pages
+// that still import it render unchanged; remove usages opportunistically.
+export default function FadeIn({
+  children,
+  className,
+}: {
   children: React.ReactNode;
   delay?: number;
   className?: string;
-}
-
-export default function FadeIn({ children, delay = 0, className }: FadeInProps) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.6, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
+}) {
+  return <div className={className}>{children}</div>;
 }

@@ -20,35 +20,38 @@ export default function Footer() {
     app && APPS_WITH_TERMS.has(app.slug) ? `/apps/${app.slug}/terms` : "/terms";
 
   return (
-    <footer className="border-t border-border">
-      <div className="mx-auto max-w-6xl px-6 py-16">
+    <footer className="crosshair border-t border-border">
+      <div className="px-6 py-14">
         <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <div className="font-display text-base font-bold tracking-tight">FadiDev</div>
-            <p className="mt-2 max-w-[26ch] text-sm leading-relaxed text-muted">
-              A one-person app studio in Germany. Small, careful apps for iOS.
+            <div className="font-mono text-sm font-semibold tracking-[0.08em]">
+              FADIDEV
+            </div>
+            <p className="mt-3 max-w-[30ch] text-sm leading-relaxed text-muted">
+              The one-person app workshop of Fadi. Small, careful apps for iOS,
+              made in Germany.
             </p>
           </div>
-          <nav className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
-            <Link href={privacyHref} className="text-muted transition-colors hover:text-foreground">
-              Privacy
+          <nav className="flex flex-wrap gap-x-7 gap-y-3 font-mono text-[13px]">
+            <Link href={privacyHref} className="text-muted transition-colors hover:text-term">
+              privacy
             </Link>
-            <Link href={termsHref} className="text-muted transition-colors hover:text-foreground">
-              Terms
+            <Link href={termsHref} className="text-muted transition-colors hover:text-term">
+              terms
             </Link>
-            <Link href="/support" className="text-muted transition-colors hover:text-foreground">
-              Support
+            <Link href="/support" className="text-muted transition-colors hover:text-term">
+              support
             </Link>
             <a
               href="mailto:support@fadidev.app"
-              className="text-muted transition-colors hover:text-foreground"
+              className="text-muted transition-colors hover:text-term"
             >
               support@fadidev.app
             </a>
           </nav>
         </div>
         <div className="spec-label mt-14 text-faint">
-          © {new Date().getFullYear()} FadiDev · Made in Germany
+          {`© ${new Date().getFullYear()} FadiDev · This site sets no cookies, runs no analytics, and has no idea you're here.`}
         </div>
       </div>
     </footer>

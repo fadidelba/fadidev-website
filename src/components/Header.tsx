@@ -1,47 +1,25 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-header-bg backdrop-blur-xl">
-      <div
-        className={`mx-auto flex max-w-6xl items-center justify-between px-6 py-4 transition-[border-color] duration-300 border-b ${
-          scrolled ? "border-border" : "border-transparent"
-        }`}
-      >
+    <header className="sticky top-0 z-50 border-b border-border bg-header-bg backdrop-blur-xl">
+      <div className="flex items-center justify-between px-6 py-5">
         <Link
           href="/"
-          className="font-display text-[17px] font-bold tracking-tight text-foreground transition-opacity hover:opacity-70"
+          className="cursor font-mono text-sm font-semibold tracking-[0.08em] transition-opacity hover:opacity-70"
         >
-          FadiDev
-          <span className="ml-1.5 align-middle text-[9px] font-medium tracking-[0.14em] text-muted">
-            APP STUDIO
-          </span>
+          FADIDEV
         </Link>
-        <nav className="flex items-center gap-6">
-          <Link
-            href="/#apps"
-            className="text-sm text-muted transition-colors hover:text-foreground"
-          >
-            Apps
+        <nav className="flex items-center gap-7 font-mono text-[13px]">
+          <Link href="/#apps" className="text-muted transition-colors hover:text-term">
+            apps
           </Link>
-          <Link
-            href="/support"
-            className="text-sm text-muted transition-colors hover:text-foreground"
-          >
-            Support
+          <Link href="/writing" className="text-muted transition-colors hover:text-term">
+            notes
+          </Link>
+          <Link href="/support" className="text-muted transition-colors hover:text-term">
+            support
           </Link>
           <ThemeToggle />
         </nav>

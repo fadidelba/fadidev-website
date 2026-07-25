@@ -1,44 +1,88 @@
 @import "tailwindcss";
 
 /* ————————————————————————————————————————————————
-   FadiDev tokens — the studio is monochrome paper/ink;
-   every drop of color belongs to an app.
+   FadiDev — the dark workshop.
+   One theme, graphite and ink; every drop of color is
+   an app, glowing like an instrument lamp on the bench.
    ———————————————————————————————————————————————— */
 :root {
-  --background: #f5f5f2;
-  --background-raised: #fdfdfc;
-  --foreground: #1b1c1e;
-  --muted: #62646a;
-  --faint: #9a9b9f;
-  --border: #e0e0da;
-  --border-strong: #c9c9c2;
-  --header-bg: rgba(245, 245, 242, 0.85);
+  --background: #0e0f11;
+  --background-raised: #15161a;
+  --foreground: #e9eae6;
+  --muted: #9da09b;
+  --faint: #63665f;
+  --border: #232529;
+  --border-strong: #3a3d43;
   /* legacy aliases still used by inner pages */
-  --background-secondary: #eeeee9;
-  --accent: #1b1c1e;
-  --accent-hover: #454549;
-  --card-bg: #fdfdfc;
-  --card-hover: #f8f8f5;
-  --gradient-from: #f5f5f2;
-  --gradient-to: #eeeee9;
+  --background-secondary: #15161a;
+  --accent: #e9eae6;
+  --accent-hover: #c4c6c1;
+  --card-bg: #15161a;
+  --card-hover: #1b1d21;
+  --gradient-from: #0e0f11;
+  --gradient-to: #15161a;
+  --header-bg: rgba(14, 15, 17, 0.85);
+  /* knobs the light theme turns */
+  --tone-mix: white;
+  --device-bg: #101114;
+  --device-shadow: rgb(0 0 0 / 0.6);
+  /* phosphor: the terminal's neon green */
+  --term: #3ee885;
+  --term-glow: color-mix(in oklab, var(--term) 55%, transparent);
+  --scanline: rgb(255 255 255 / 0.028);
 }
 
-.dark {
-  --background: #141517;
-  --background-raised: #1c1d20;
-  --foreground: #ebece8;
-  --muted: #a0a19d;
-  --faint: #6e6f6b;
-  --border: #292a2d;
-  --border-strong: #3a3b3f;
-  --header-bg: rgba(20, 21, 23, 0.85);
-  --background-secondary: #1c1d20;
-  --accent: #ebece8;
-  --accent-hover: #c9cac6;
-  --card-bg: #1c1d20;
-  --card-hover: #212226;
-  --gradient-from: #141517;
-  --gradient-to: #1a1b1e;
+/* The workshop by day: same bench, blinds open.
+   Follows the system, unless the header toggle pins a theme. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --background: #f2f1ec;
+    --background-raised: #fbfaf7;
+    --foreground: #191a18;
+    --muted: #5f625c;
+    --faint: #999c94;
+    --border: #dcdbd3;
+    --border-strong: #c0bfb6;
+    --background-secondary: #eae9e2;
+    --accent: #191a18;
+    --accent-hover: #43443f;
+    --card-bg: #fbfaf7;
+    --card-hover: #f3f2ec;
+    --gradient-from: #f2f1ec;
+    --gradient-to: #eae9e2;
+    --header-bg: rgba(242, 241, 236, 0.85);
+    --tone-mix: #191a18;
+    --device-bg: #ffffff;
+    --device-shadow: rgb(30 32 28 / 0.22);
+    --term: #107a45;
+    --term-glow: transparent;
+    --scanline: transparent;
+  }
+}
+/* ponytail: same block twice — CSS can't share a ruleset between a media
+   query and an attribute selector without a preprocessor */
+:root[data-theme="light"] {
+  --background: #f2f1ec;
+  --background-raised: #fbfaf7;
+  --foreground: #191a18;
+  --muted: #5f625c;
+  --faint: #999c94;
+  --border: #dcdbd3;
+  --border-strong: #c0bfb6;
+  --background-secondary: #eae9e2;
+  --accent: #191a18;
+  --accent-hover: #43443f;
+  --card-bg: #fbfaf7;
+  --card-hover: #f3f2ec;
+  --gradient-from: #f2f1ec;
+  --gradient-to: #eae9e2;
+  --header-bg: rgba(242, 241, 236, 0.85);
+  --tone-mix: #191a18;
+  --device-bg: #ffffff;
+  --device-shadow: rgb(30 32 28 / 0.22);
+  --term: #107a45;
+  --term-glow: transparent;
+  --scanline: transparent;
 }
 
 @theme inline {
@@ -57,8 +101,8 @@
   --color-header-bg: var(--header-bg);
   --color-gradient-from: var(--gradient-from);
   --color-gradient-to: var(--gradient-to);
+  --color-term: var(--term);
   --font-sans: var(--font-body);
-  --font-display: var(--font-display);
   --font-mono: var(--font-mono);
 }
 
@@ -70,37 +114,47 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body), system-ui, -apple-system, sans-serif;
-  font-feature-settings: "ss01";
 }
 
 ::selection {
-  background: var(--foreground);
-  color: var(--background);
+  background: var(--term);
+  color: #0a0b0c;
+}
+
+/* Faint CRT scanlines — dark theme only (--scanline goes transparent by day) */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    var(--scanline) 0 1px,
+    transparent 1px 3px
+  );
 }
 
 /* ————————————————————————————————————————————————
-   App color worlds. --app is set inline per card/page;
-   everything else is derived, so light & dark both work.
+   App color worlds, tuned for the dark bench.
+   --app is set inline per row/section; the rest derives.
    ———————————————————————————————————————————————— */
 .app-world {
-  --app-tint: color-mix(in oklab, var(--app) 9%, var(--background));
-  --app-tint-strong: color-mix(in oklab, var(--app) 16%, var(--background));
-  --app-line: color-mix(in oklab, var(--app) 28%, var(--border));
-  --app-tone: color-mix(in oklab, var(--app) 72%, var(--foreground));
-}
-.dark .app-world,
-.dark.app-world {
-  --app-tint: color-mix(in oklab, var(--app) 13%, var(--background));
+  --app-tint: color-mix(in oklab, var(--app) 11%, var(--background));
   --app-tint-strong: color-mix(in oklab, var(--app) 22%, var(--background));
-  --app-line: color-mix(in oklab, var(--app) 34%, var(--border));
-  --app-tone: color-mix(in oklab, var(--app) 62%, var(--foreground));
+  --app-line: color-mix(in oklab, var(--app) 38%, var(--border));
+  --app-tone: color-mix(in oklab, var(--app) 62%, var(--tone-mix));
+  --app-glow: color-mix(in oklab, var(--app) 55%, transparent);
 }
 
 /* ————————————————————————————————————————————————
-   Type helpers
+   Type. One engineered grotesk carries the page;
+   display = the same family, pushed wide and heavy.
    ———————————————————————————————————————————————— */
 .font-display {
-  font-family: var(--font-display), var(--font-body), sans-serif;
+  font-family: var(--font-body), sans-serif;
+  font-stretch: 116%;
+  letter-spacing: -0.015em;
 }
 .font-mono {
   font-family: var(--font-mono), ui-monospace, monospace;
@@ -113,8 +167,104 @@ body {
   text-transform: uppercase;
 }
 
+/* Section labels as shell prompts, lit in phosphor green. */
+.prompt {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--term);
+  text-shadow: 0 0 9px var(--term-glow);
+}
+.prompt::before {
+  content: "$ ";
+  color: var(--faint);
+  text-shadow: none;
+}
+
+/* Blueprint crosshair where a section rule meets the page rails. */
+.crosshair {
+  position: relative;
+}
+.crosshair::before,
+.crosshair::after {
+  content: "+";
+  position: absolute;
+  top: 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--faint);
+  pointer-events: none;
+}
+.crosshair::before {
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+.crosshair::after {
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+/* Status lamp. Live apps glow; workbench apps idle. */
+.lamp {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: var(--app);
+  box-shadow: 0 0 10px 1px var(--app-glow);
+}
+.lamp-idle {
+  background: transparent;
+  border: 1.5px solid var(--faint);
+  box-shadow: none;
+}
+
+/* Wordmark cursor, phosphor green */
+.cursor::after {
+  content: "_";
+  color: var(--term);
+  text-shadow: 0 0 9px var(--term-glow);
+  animation: blink 1.2s steps(2, start) infinite;
+}
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* ————————————————————————————————————————————————
+   Device frame for real store screenshots.
+   Hover: the instrument lights up in its app color.
+   ———————————————————————————————————————————————— */
+.device {
+  border-radius: 34px;
+  border: 1px solid var(--border-strong);
+  background: var(--device-bg);
+  padding: 9px;
+  box-shadow: 0 24px 60px -12px var(--device-shadow);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+.device > img {
+  border-radius: 26px;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.device:hover {
+  transform: translateY(-10px);
+  border-color: var(--app-line);
+  box-shadow:
+    0 0 0 1px var(--app-line),
+    0 0 44px -6px var(--app-glow),
+    0 28px 60px -12px var(--device-shadow);
+}
+
 /* ————————————————————————————————————————————————
    Load choreography: hero elements rise once, in order.
+   .boot rows power on with inline animation-delay.
    ———————————————————————————————————————————————— */
 @keyframes rise {
   from {
@@ -126,7 +276,8 @@ body {
     transform: translateY(0);
   }
 }
-.rise {
+.rise,
+.boot {
   animation: rise 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 .rise-1 { animation-delay: 0.05s; }
@@ -134,6 +285,21 @@ body {
 .rise-3 { animation-delay: 0.23s; }
 .rise-4 { animation-delay: 0.32s; }
 .rise-5 { animation-delay: 0.41s; }
+
+/* Screenshots tilt in as they scroll onto the bench — CSS only. */
+@supports (animation-timeline: view()) {
+  .tilt-in {
+    animation: tilt-in both cubic-bezier(0.22, 1, 0.36, 1);
+    animation-timeline: view();
+    animation-range: entry 0% entry 80%;
+  }
+  @keyframes tilt-in {
+    from {
+      opacity: 0;
+      transform: translateY(44px);
+    }
+  }
+}
 
 /* Knight replays its L-shaped move into the landing square: over, then up. */
 @keyframes knight-hop {
@@ -182,10 +348,16 @@ body {
     scroll-behavior: auto;
   }
   .rise,
+  .boot,
+  .tilt-in,
+  .cursor::after,
   .group:hover .knight-piece,
   .group:hover .scan-line,
   .group:hover .settle-bar,
   .group:hover .needle {
     animation: none;
+  }
+  .device:hover {
+    transform: none;
   }
 }

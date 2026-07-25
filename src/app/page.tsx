@@ -2,219 +2,185 @@ import Image from "next/image";
 import Link from "next/link";
 import { apps } from "@/data/apps";
 import AppGlyph from "@/components/AppGlyph";
-import { AppStoreButton, InDevelopmentTag } from "@/components/StoreBadges";
-import FadeIn from "@/components/FadeIn";
+import { AppStoreButton } from "@/components/StoreBadges";
 
 export default function HomePage() {
   const featured = apps.find((a) => a.status === "live") ?? apps[0];
-  const upcoming = apps.filter((a) => a.slug !== featured.slug);
+
+  // the featured app's plate, read like an instrument label
+  const plate: [string, string][] = [
+    ["platform", "iOS 17+"],
+    ["price", "€1.99, once"],
+    ["network", "none — fully offline"],
+    ["languages", "7"],
+  ];
 
   return (
     <>
-      {/* Hero — the studio thesis, plus the shelf of marks */}
-      <section className="px-6 pt-40 pb-24 sm:pt-48">
-        <div className="mx-auto max-w-6xl">
-          <p className="spec-label rise rise-1 text-muted">
-            FadiDev · one-person app studio
-          </p>
-          <h1 className="rise rise-2 mt-6 max-w-[16ch] font-display text-[clamp(2.6rem,7vw,5.2rem)] font-bold leading-[1.02] tracking-tight">
-            Small, careful apps for&nbsp;iOS.
-          </h1>
-          <p className="rise rise-3 mt-8 max-w-[46ch] text-lg leading-relaxed text-muted">
-            Each one does a single job well, runs on your device, and is yours
-            with one purchase. No accounts, no ads, no tracking.
-          </p>
-
-          {/* the shelf */}
-          <div className="rise rise-4 mt-14 flex flex-wrap items-end gap-4">
-            {apps.map((app) => (
-              <Link
-                key={app.slug}
-                href={`/apps/${app.slug}`}
-                title={app.name}
-                className="app-world group flex h-[72px] w-[72px] items-center justify-center rounded-[22px] border transition-transform duration-200 hover:-translate-y-1.5"
-                style={
-                  {
-                    "--app": app.iconColor,
-                    background: "var(--app-tint)",
-                    borderColor: "var(--app-line)",
-                    color: "var(--app-tone)",
-                  } as React.CSSProperties
-                }
-              >
-                <AppGlyph slug={app.slug} className="h-9 w-9" />
-              </Link>
-            ))}
-          </div>
-          <p className="rise rise-5 spec-label mt-5 text-faint">
-            {apps.filter((a) => a.status === "live").length} in the App Store ·{" "}
-            {upcoming.length} on the workbench
-          </p>
-        </div>
+      {/* Hero */}
+      <section className="px-6 pt-24 pb-20 sm:pt-32 sm:pb-28">
+        <h1 className="rise rise-1 max-w-[14ch] font-display text-[clamp(2rem,6.5vw,4.9rem)] font-extrabold uppercase leading-[0.98]">
+          Apps, built like instruments.
+        </h1>
+        <p className="rise rise-2 mt-8 max-w-[52ch] text-lg leading-relaxed text-muted">
+          I&apos;m Fadi. In a one-person workshop in Germany I build small,
+          careful apps for iOS — each one does a single job, runs entirely on
+          your device, and is yours with one purchase. No accounts, no ads, no
+          tracking.
+        </p>
       </section>
 
-      {/* Featured: the shipped app, in its own color world */}
-      <section id="apps" className="scroll-mt-24 px-6 pb-8">
-        <div className="mx-auto max-w-6xl">
-          <FadeIn>
-            <div
-              className="app-world overflow-hidden rounded-[28px] border"
+      {/* The instrument panel — every app is a row */}
+      <section id="apps" className="crosshair scroll-mt-24 border-t border-border">
+        <h2 className="prompt px-6 pt-6">ls ./apps</h2>
+        <div className="mt-4">
+          {apps.map((app, i) => (
+            <Link
+              key={app.slug}
+              href={`/apps/${app.slug}`}
+              className="app-world boot group grid grid-cols-[auto_auto_1fr] items-center gap-x-4 border-t border-border px-6 py-6 transition-colors first:border-t-0 hover:bg-(--app-tint) sm:grid-cols-[auto_auto_240px_1fr_auto] sm:gap-x-6"
               style={
                 {
-                  "--app": featured.iconColor,
-                  background: "var(--app-tint)",
-                  borderColor: "var(--app-line)",
+                  "--app": app.iconColor,
+                  animationDelay: `${0.35 + i * 0.09}s`,
                 } as React.CSSProperties
               }
             >
-              <div className="grid gap-10 p-8 sm:p-12 lg:grid-cols-[1.1fr_1fr] lg:gap-6">
-                <div className="flex flex-col justify-center">
-                  <div className="group flex items-center gap-4">
-                    <div
-                      className="flex h-14 w-14 items-center justify-center rounded-2xl border"
-                      style={{
-                        background: "var(--app-tint-strong)",
-                        borderColor: "var(--app-line)",
-                        color: "var(--app-tone)",
-                      }}
-                    >
-                      <AppGlyph slug={featured.slug} className="h-7 w-7" />
-                    </div>
-                    <div>
-                      <h2 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
-                        {featured.name}
-                      </h2>
-                      <p className="text-sm text-muted">{featured.tagline}</p>
-                    </div>
-                  </div>
+              <span
+                className={`lamp ${app.status === "live" ? "" : "lamp-idle"}`}
+                aria-hidden
+              />
+              <span style={{ color: "var(--app-tone)" }}>
+                <AppGlyph slug={app.slug} className="h-8 w-8" />
+              </span>
+              <h3 className="font-display text-xl font-bold">{app.name}</h3>
+              <p className="col-span-3 mt-1.5 text-sm text-muted sm:col-span-1 sm:mt-0">
+                {app.tagline}
+              </p>
+              <span
+                className="spec-label hidden sm:block"
+                style={{
+                  color: app.status === "live" ? "var(--app-tone)" : "var(--faint)",
+                }}
+              >
+                {app.status === "live" ? "in the app store →" : "in development"}
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
 
-                  <p className="mt-7 max-w-[48ch] text-[15px] leading-relaxed text-muted">
-                    {featured.description}
-                  </p>
+      {/* Featured — the shipped instrument, lit in its own color */}
+      <section
+        className="app-world crosshair overflow-hidden border-t border-border"
+        style={{ "--app": featured.iconColor } as React.CSSProperties}
+      >
+        <div
+          className="grid gap-12 px-6 pt-14 sm:pt-16 lg:grid-cols-[1.05fr_1fr] lg:gap-8"
+          style={{ background: "var(--app-tint)" }}
+        >
+          <div className="flex flex-col justify-center pb-14 sm:pb-16">
+            <p className="spec-label" style={{ color: "var(--app-tone)" }}>
+              001 / shipped
+            </p>
+            <h2 className="mt-4 font-display text-3xl font-extrabold uppercase sm:text-4xl">
+              {featured.name}
+            </h2>
+            <p className="mt-2 text-base text-muted">{featured.tagline}</p>
 
-                  <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2">
-                    {featured.specs.map((s) => (
-                      <span key={s} className="spec-label" style={{ color: "var(--app-tone)" }}>
-                        {s}
-                      </span>
-                    ))}
-                  </div>
+            <p className="mt-6 max-w-[48ch] text-[15px] leading-relaxed text-muted">
+              {featured.description}
+            </p>
 
-                  <div className="mt-9 flex flex-wrap items-center gap-5">
-                    <AppStoreButton url={featured.appStoreUrl} size="lg" />
-                    <Link
-                      href={`/apps/${featured.slug}`}
-                      className="text-sm font-medium underline decoration-border-strong underline-offset-4 transition-colors hover:decoration-current"
-                    >
-                      More about {featured.name}
-                    </Link>
-                  </div>
+            {/* the label plate */}
+            <div
+              className="mt-8 max-w-sm border font-mono text-[12px]"
+              style={{ borderColor: "var(--app-line)" }}
+            >
+              {plate.map(([k, v]) => (
+                <div
+                  key={k}
+                  className="flex justify-between gap-6 border-t px-4 py-2 first:border-t-0"
+                  style={{ borderColor: "var(--app-line)" }}
+                >
+                  <span className="uppercase tracking-[0.08em] text-faint">{k}</span>
+                  <span style={{ color: "var(--app-tone)" }}>{v}</span>
                 </div>
+              ))}
+            </div>
 
-                {/* real store screenshots, leaning like prints on a shelf */}
-                {featured.screenshots ? (
-                  <div className="relative mx-auto flex items-end justify-center lg:mx-0">
-                    <div className="relative z-10 w-[46%] max-w-[220px] -rotate-2 overflow-hidden rounded-[22px] border shadow-xl transition-transform duration-300 hover:-translate-y-2"
-                      style={{ borderColor: "var(--app-line)" }}>
-                      <Image src={`/apps/${featured.slug}/1.png`} alt={`${featured.name} — puzzle mode`} width={405} height={880} className="block h-auto w-full" priority />
-                    </div>
-                    <div className="relative z-20 -ml-10 w-[50%] max-w-[240px] translate-y-4 overflow-hidden rounded-[22px] border shadow-2xl transition-transform duration-300 hover:-translate-y-2"
-                      style={{ borderColor: "var(--app-line)" }}>
-                      <Image src={`/apps/${featured.slug}/2.png`} alt={`${featured.name} — mission mode`} width={405} height={880} className="block h-auto w-full" priority />
-                    </div>
-                  </div>
-                ) : null}
+            <div className="mt-9 flex flex-wrap items-center gap-5">
+              <AppStoreButton url={featured.appStoreUrl} size="lg" />
+              <Link
+                href={`/apps/${featured.slug}`}
+                className="font-mono text-[13px] text-muted underline underline-offset-4 transition-colors hover:text-term"
+              >
+                more about {featured.name.toLowerCase()} →
+              </Link>
+            </div>
+          </div>
+
+          {/* real store screenshots in device frames */}
+          {featured.screenshots ? (
+            <div className="relative mx-auto flex w-full max-w-[440px] items-end justify-center self-end lg:mx-0">
+              <div className="w-[47%] -rotate-2 translate-y-5">
+                <div className="tilt-in device">
+                  <Image src={`/apps/${featured.slug}/1.png`} alt={`${featured.name} — puzzle mode`} width={405} height={880} priority />
+                </div>
+              </div>
+              <div className="z-10 -ml-8 w-[52%] rotate-1 translate-y-12">
+                <div className="tilt-in device">
+                  <Image src={`/apps/${featured.slug}/2.png`} alt={`${featured.name} — mission mode`} width={405} height={880} priority />
+                </div>
               </div>
             </div>
-          </FadeIn>
+          ) : null}
         </div>
       </section>
 
-      {/* The workbench */}
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-6xl">
-          <FadeIn>
-            <div className="flex items-baseline justify-between gap-4">
-              <h2 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
-                On the workbench
-              </h2>
-              <span className="spec-label hidden text-faint sm:block">
-                next up from the studio
-              </span>
-            </div>
-          </FadeIn>
-
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {upcoming.map((app, i) => (
-              <FadeIn key={app.slug} delay={i * 0.08}>
-                <Link
-                  href={`/apps/${app.slug}`}
-                  className="app-world group flex h-full flex-col rounded-[22px] border bg-background-raised p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                  style={
-                    {
-                      "--app": app.iconColor,
-                      borderColor: "var(--border)",
-                    } as React.CSSProperties
-                  }
-                >
-                  <div
-                    className="flex h-12 w-12 items-center justify-center rounded-[15px] border"
-                    style={{
-                      background: "var(--app-tint)",
-                      borderColor: "var(--app-line)",
-                      color: "var(--app-tone)",
-                    }}
-                  >
-                    <AppGlyph slug={app.slug} className="h-6 w-6" />
-                  </div>
-                  <h3 className="mt-5 font-display text-lg font-bold tracking-tight">
-                    {app.name}
-                  </h3>
-                  <p className="mt-1 text-sm text-muted">{app.tagline}</p>
-                  <p className="mt-4 flex-1 text-sm leading-relaxed text-muted">
-                    {app.description.length > 130
-                      ? app.description.slice(0, 127).trimEnd() + "…"
-                      : app.description}
-                  </p>
-                  <div className="mt-6">
-                    <InDevelopmentTag />
-                  </div>
-                </Link>
-              </FadeIn>
-            ))}
-          </div>
+      {/* Workbench log */}
+      <section className="crosshair border-t border-border px-6 py-16">
+        <div className="flex items-baseline justify-between gap-4">
+          <h2 className="prompt">tail workbench.log</h2>
+          <Link
+            href="/writing"
+            className="font-mono text-[13px] text-muted transition-colors hover:text-term"
+          >
+            all notes →
+          </Link>
         </div>
+        <Link href="/writing/knight-tour-solver-bug" className="group mt-8 block max-w-[72ch]">
+          <p className="font-mono text-[12px] text-faint">
+            2026-07-21 <span className="mx-2 text-border-strong">{"//"}</span>
+            knight-grid
+          </p>
+          <h3 className="mt-2 font-display text-xl font-bold underline decoration-transparent underline-offset-4 group-hover:decoration-current sm:text-2xl">
+            The solver bug that called solvable boards impossible
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-muted">
+            A search cap is a timeout, not a proof — how I nearly shipped a
+            solver that lied about which boards were solvable.
+          </p>
+        </Link>
       </section>
 
-      {/* Principles — what every FadiDev app promises */}
-      <section className="border-t border-border px-6 py-20">
-        <div className="mx-auto max-w-6xl">
-          <FadeIn>
-            <h2 className="spec-label text-muted">Every app from this studio</h2>
-          </FadeIn>
-          <div className="mt-10 grid gap-10 sm:grid-cols-3">
-            {[
-              {
-                title: "Runs on your device",
-                body: "Your data stays on your phone. No servers of ours to trust, because there are none.",
-              },
-              {
-                title: "Buy once, own it",
-                body: "A fair one-time price. No subscriptions where a purchase will do, and never any ads.",
-              },
-              {
-                title: "Does one job well",
-                body: "Small tools with a clear purpose, built and maintained by one person who answers your email.",
-              },
-            ].map((p, i) => (
-              <FadeIn key={p.title} delay={i * 0.08}>
-                <div>
-                  <h3 className="font-display text-lg font-bold tracking-tight">{p.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted">{p.body}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+      {/* Why so small — one voice, no cards */}
+      <section className="crosshair grid gap-8 border-t border-border px-6 py-16 lg:grid-cols-[1fr_2fr]">
+        <h2 className="font-display text-2xl font-extrabold uppercase sm:text-3xl">
+          Why so small?
+        </h2>
+        <div className="max-w-[60ch] space-y-5 text-[15px] leading-relaxed text-muted lg:pt-1">
+          <p>
+            Every app here follows the same three rules: it runs on your
+            device, you buy it once, and it does one job well. There&apos;s no
+            server behind any of them — nothing to sign into, nothing phoning
+            home, nothing that stops working when a startup pivots.
+          </p>
+          <p>
+            That&apos;s not a business strategy, it&apos;s just the kind of
+            software I want on my own phone. And when you email support, the
+            person who wrote the code reads it — usually the same day.
+          </p>
         </div>
       </section>
     </>

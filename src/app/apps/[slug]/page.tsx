@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { apps } from "@/data/apps";
 import AppGlyph from "@/components/AppGlyph";
 import { AppStoreButton, InDevelopmentTag } from "@/components/StoreBadges";
-import FadeIn from "@/components/FadeIn";
 import type { Metadata } from "next";
 
 export const dynamicParams = false;
@@ -42,7 +41,7 @@ export default async function AppPage({ params }: Props) {
     >
       {/* Hero in the app's color world */}
       <section
-        className="border-b px-6 pt-36 pb-16 sm:pb-20"
+        className="border-b px-6 pt-16 pb-16 sm:pb-20"
         style={{ background: "var(--app-tint)", borderColor: "var(--app-line)" }}
       >
         <div className="mx-auto max-w-4xl">
@@ -101,25 +100,18 @@ export default async function AppPage({ params }: Props) {
       {shots.length > 0 && (
         <section className="px-6 py-16">
           <div className="mx-auto max-w-4xl">
-            <FadeIn>
-              <div className="flex flex-wrap justify-center gap-6">
-                {shots.map((n) => (
-                  <div
-                    key={n}
-                    className="w-[240px] overflow-hidden rounded-[22px] border shadow-lg"
-                    style={{ borderColor: "var(--app-line)" }}
-                  >
-                    <Image
-                      src={`/apps/${app.slug}/${n}.png`}
-                      alt={`${app.name} screenshot ${n}`}
-                      width={405}
-                      height={880}
-                      className="block h-auto w-full"
-                    />
-                  </div>
-                ))}
-              </div>
-            </FadeIn>
+            <div className="flex flex-wrap justify-center gap-6">
+              {shots.map((n) => (
+                <div key={n} className="tilt-in device w-[248px]">
+                  <Image
+                    src={`/apps/${app.slug}/${n}.png`}
+                    alt={`${app.name} screenshot ${n}`}
+                    width={405}
+                    height={880}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       )}
@@ -127,21 +119,17 @@ export default async function AppPage({ params }: Props) {
       {/* Features */}
       <section className="px-6 py-16">
         <div className="mx-auto max-w-4xl">
-          <FadeIn>
-            <h2 className="spec-label text-muted">What it does</h2>
-          </FadeIn>
+          <h2 className="spec-label text-muted">What it does</h2>
           <div className="mt-8 grid gap-x-10 gap-y-5 sm:grid-cols-2">
             {app.features.map((feature, i) => (
-              <FadeIn key={i} delay={Math.min(i * 0.04, 0.3)}>
-                <div className="flex items-start gap-3.5">
-                  <span className="mt-[3px] shrink-0" style={{ color: "var(--app-tone)" }}>
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                  </span>
-                  <span className="text-sm leading-relaxed text-muted">{feature}</span>
-                </div>
-              </FadeIn>
+              <div key={i} className="flex items-start gap-3.5">
+                <span className="mt-[3px] shrink-0" style={{ color: "var(--app-tone)" }}>
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </span>
+                <span className="text-sm leading-relaxed text-muted">{feature}</span>
+              </div>
             ))}
           </div>
         </div>
@@ -150,25 +138,22 @@ export default async function AppPage({ params }: Props) {
       {/* Trust line */}
       <section className="px-6 pb-20">
         <div className="mx-auto max-w-4xl">
-          <FadeIn>
-            <div
-              className="flex flex-col gap-4 rounded-[22px] border p-7 sm:flex-row sm:items-center sm:justify-between"
-              style={{ background: "var(--app-tint)", borderColor: "var(--app-line)" }}
-            >
-              <p className="text-sm leading-relaxed text-muted">
-                Questions about {app.name}? One person builds it, and the same
-                person answers.
-              </p>
-              <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">
-                <Link href="/support" className="underline decoration-border-strong underline-offset-4 transition-colors hover:decoration-current">
-                  Support
-                </Link>
-                <Link href={`/apps/${app.slug}/privacy`} className="underline decoration-border-strong underline-offset-4 transition-colors hover:decoration-current">
-                  Privacy
-                </Link>
-              </div>
+          <div
+            className="flex flex-col gap-4 border-t pt-8 sm:flex-row sm:items-center sm:justify-between"
+            style={{ borderColor: "var(--app-line)" }}
+          >
+            <p className="text-sm leading-relaxed text-muted">
+              Questions about {app.name}? I build it, and I answer the email.
+            </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">
+              <Link href="/support" className="underline decoration-border-strong underline-offset-4 transition-colors hover:decoration-current">
+                Support
+              </Link>
+              <Link href={`/apps/${app.slug}/privacy`} className="underline decoration-border-strong underline-offset-4 transition-colors hover:decoration-current">
+                Privacy
+              </Link>
             </div>
-          </FadeIn>
+          </div>
         </div>
       </section>
     </div>

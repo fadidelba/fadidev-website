@@ -38,9 +38,9 @@ export const apps: AppInfo[] = [
   {
     slug: "qrisp",
     name: "Qrisp",
-    tagline: "Premium QR & Barcode Scanner",
+    tagline: "A QR scanner that minds its own business",
     description:
-      "Scan and create QR codes and barcodes with ease. Qrisp instantly recognizes URLs, WiFi networks, contacts, and more — all while keeping your data private and on-device.",
+      "Point it at any QR code or barcode and it tells you what it is — a URL, a Wi-Fi network, a contact, a product — without sending a single byte off your phone. It creates codes too.",
     iconColor: "#22C997",
     status: "in-development",
     specs: ["iOS", "on-device", "14 languages"],
@@ -61,7 +61,7 @@ export const apps: AppInfo[] = [
   {
     slug: "quietnights",
     name: "QuietNights",
-    tagline: "Nursery noise & sleep monitor",
+    tagline: "Watches the noise, never records a sound",
     description:
       "A calm, on-device nursery sound monitor that brackets each nap or night into a session and hands you a plain-language morning verdict on whether noise threatened your baby's sleep.",
     iconColor: "#D97706",
