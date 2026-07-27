@@ -25,7 +25,7 @@ export default function QrispTermsPage() {
             Terms of Service
           </h1>
           <p className="mt-2 text-lg text-muted">Qrisp — QR & Barcode Scanner</p>
-          <p className="mt-4 text-sm text-muted">Last updated: April 10, 2026</p>
+          <p className="mt-4 text-sm text-muted">Last updated: July 27, 2026</p>
         </FadeIn>
 
         <div className="mt-16 space-y-12 text-[15px] leading-[1.8] text-muted">
@@ -100,16 +100,14 @@ export default function QrispTermsPage() {
                   hours before the renewal date.
                 </li>
                 <li>
-                  <strong className="text-foreground">Billing:</strong> Payment is charged to your Apple ID or
-                  Google Play account at confirmation of purchase. Your account will
-                  be charged for renewal within 24 hours prior to the end of the
-                  current period.
+                  <strong className="text-foreground">Billing:</strong> Payment is charged to your Apple ID at
+                  confirmation of purchase. Your account will be charged for renewal
+                  within 24 hours prior to the end of the current period.
                 </li>
                 <li>
                   <strong className="text-foreground">Cancellation:</strong> You can manage and cancel your
-                  subscriptions through your device settings. On iOS, go to Settings
-                  &rarr; Apple ID &rarr; Subscriptions. On Android, go to Google
-                  Play Store &rarr; Subscriptions.
+                  subscriptions in Settings &rarr; Apple ID &rarr; Subscriptions, or
+                  from within Qrisp under Settings.
                 </li>
                 <li>
                   <strong className="text-foreground">Free Trials:</strong> If a free trial is offered, any
@@ -124,9 +122,8 @@ export default function QrispTermsPage() {
             <section>
               <h2 className="text-xl font-semibold text-foreground">Refund Policy</h2>
               <p className="mt-4">
-                All purchases are processed through the Apple App Store or Google
-                Play Store. Refund requests must be submitted directly to the
-                respective platform:
+                All purchases are processed through the Apple App Store. Refund
+                requests must be submitted directly to Apple:
               </p>
               <ul className="mt-4 list-disc space-y-3 pl-6">
                 <li>
@@ -135,15 +132,10 @@ export default function QrispTermsPage() {
                     reportaproblem.apple.com
                   </a>
                 </li>
-                <li>
-                  <strong className="text-foreground">Google:</strong> Open the Google Play Store app, go to your
-                  order history, and select the purchase you want to refund.
-                </li>
               </ul>
               <p className="mt-4">
                 We do not process payments directly and therefore cannot issue
-                refunds. All refund decisions are at the sole discretion of Apple or
-                Google.
+                refunds. All refund decisions are at the sole discretion of Apple.
               </p>
             </section>
           </FadeIn>
@@ -156,13 +148,14 @@ export default function QrispTermsPage() {
               </p>
               <ul className="mt-4 list-disc space-y-3 pl-6">
                 <li>
-                  <strong className="text-foreground">RevenueCat:</strong> For subscription and purchase management.
+                  <strong className="text-foreground">Apple StoreKit:</strong> For purchases and subscription
+                  management. Qrisp uses no other purchase provider.
                 </li>
                 <li>
-                  <strong className="text-foreground">Product Lookup APIs:</strong> Open Food Facts, Google Books
-                  API, Open Library, and others for barcode/ISBN lookups. These
-                  services are provided as-is, and we are not responsible for the
-                  accuracy of their data.
+                  <strong className="text-foreground">Product Lookup APIs:</strong> Open Food Facts and Open
+                  Beauty Facts, used when you scan a product barcode. These services
+                  are provided as-is, and we are not responsible for the accuracy of
+                  their data.
                 </li>
               </ul>
               <p className="mt-4">

@@ -25,7 +25,7 @@ export default function QrispPrivacyPage() {
             Privacy Policy
           </h1>
           <p className="mt-2 text-lg text-muted">Qrisp — QR & Barcode Scanner</p>
-          <p className="mt-4 text-sm text-muted">Last updated: April 10, 2026</p>
+          <p className="mt-4 text-sm text-muted">Last updated: July 27, 2026</p>
         </FadeIn>
 
         <div className="mt-16 space-y-12 text-[15px] leading-[1.8] text-muted">
@@ -34,7 +34,7 @@ export default function QrispPrivacyPage() {
               <h2 className="text-xl font-semibold text-foreground">Introduction</h2>
               <p className="mt-4">
                 FadiDev (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) develops and operates
-                Qrisp, a QR code and barcode scanner app for iOS and Android. This
+                Qrisp, a QR code and barcode scanner app for iOS. This
                 Privacy Policy explains how we handle your information when you use
                 Qrisp.
               </p>
@@ -111,20 +111,21 @@ export default function QrispPrivacyPage() {
 
           <FadeIn>
             <section>
-              <h2 className="text-xl font-semibold text-foreground">Product and Book Lookups</h2>
+              <h2 className="text-xl font-semibold text-foreground">Product Lookups</h2>
               <p className="mt-4">
-                When you scan a product barcode or ISBN, Qrisp can optionally look
-                up product or book information using the following public APIs:
+                When you scan a product barcode, Qrisp can look up what the product
+                is. Only these services are contacted:
               </p>
               <ul className="mt-4 list-disc space-y-3 pl-6">
-                <li>Open Food Facts, Open Beauty Facts, Open Products Facts</li>
-                <li>Google Books API</li>
-                <li>Open Library API</li>
+                <li>Open Food Facts</li>
+                <li>Open Beauty Facts</li>
                 <li>UPCitemdb</li>
               </ul>
               <p className="mt-4">
-                These lookups send only the scanned barcode or ISBN number and your
-                language preference to the respective service. No personal
+                Only barcodes are looked up. QR codes are never sent anywhere — a
+                Wi-Fi password or bank transfer you scan stays on the device. A
+                lookup sends the barcode number and your language preference, and
+                nothing else. No personal
                 information or device identifiers are shared. These services have
                 their own privacy policies, and we encourage you to review them.
               </p>
@@ -135,16 +136,29 @@ export default function QrispPrivacyPage() {
             <section>
               <h2 className="text-xl font-semibold text-foreground">Subscriptions and Purchases</h2>
               <p className="mt-4">
-                Qrisp offers optional premium features via in-app subscriptions.
-                Subscriptions are managed through{" "}
-                <a href="https://www.revenuecat.com/privacy" className="text-accent hover:underline" target="_blank" rel="noopener noreferrer">
-                  RevenueCat
-                </a>
-                , a third-party subscription management service. RevenueCat
-                processes your subscription status and purchase information to manage
-                entitlements. Payment details are handled entirely by Apple (App
-                Store) or Google (Play Store) — we never have access to your payment
-                information.
+                Qrisp offers optional Pro features as a weekly or yearly
+                subscription, or as a one-time purchase. Purchases are handled
+                entirely by Apple through StoreKit. We use no third-party
+                subscription service, so no purchase data is shared with anyone
+                but Apple, and we never see your payment information.
+              </p>
+              <p className="mt-3">
+                Whether your Pro entitlement is active is verified on your device
+                against the App Store. Nothing about it is stored on a server of
+                ours — we do not operate one.
+              </p>
+            </section>
+          </FadeIn>
+
+          <FadeIn>
+            <section>
+              <h2 className="text-xl font-semibold text-foreground">Crash Reports</h2>
+              <p className="mt-4">
+                Qrisp can send anonymous crash and performance reports through
+                Apple&apos;s MetricKit. This is off by default and only happens if
+                you switch it on in Settings. The reports contain no scanned or
+                created content — no URLs, network names, passwords, IBANs or
+                labels — and no identifier that points back to you.
               </p>
             </section>
           </FadeIn>
@@ -155,8 +169,7 @@ export default function QrispPrivacyPage() {
               <p className="mt-4">Qrisp does not collect or use:</p>
               <ul className="mt-4 list-disc space-y-3 pl-6">
                 <li>Analytics or usage tracking data</li>
-                <li>Crash reports or performance metrics</li>
-                <li>Advertising identifiers (IDFA/GAID)</li>
+                <li>Advertising identifiers (IDFA)</li>
                 <li>Device identifiers sent to any server</li>
                 <li>Location data</li>
                 <li>Contact information</li>
