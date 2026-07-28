@@ -1,191 +1,144 @@
 import type { Metadata } from "next";
-import FadeIn from "@/components/FadeIn";
+import Link from "next/link";
+import LegalPage, { Section } from "@/components/LegalPage";
+import { apps } from "@/data/apps";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Privacy Policy for FadiDev mobile applications.",
+  description: "Privacy Policy for FadiDev iOS applications.",
 };
 
 export default function PrivacyPage() {
   return (
-    <div className="px-6 pt-16 pb-24">
-      <div className="mx-auto max-w-3xl">
-        <FadeIn>
-          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            Privacy Policy
-          </h1>
-          <p className="mt-4 text-sm text-muted">Last updated: April 2, 2026</p>
-        </FadeIn>
+    <LegalPage title="Privacy Policy" lastUpdated="2026-07-29">
+      <Section title="Introduction">
+        <p className="mt-4">
+          FadiDev (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) develops applications
+          for iOS. This Privacy Policy explains what happens to your
+          information when you use them. The short version: our apps run on
+          your device, and we do not receive your data.
+        </p>
+        <p className="mt-3">
+          Each app also has its own policy covering what it stores on your
+          device and which permissions it asks for. Where an app&apos;s policy is
+          more specific than this one, the app&apos;s policy applies.
+        </p>
+      </Section>
 
-        <div className="mt-16 space-y-12 text-[15px] leading-[1.8] text-muted">
-          <FadeIn>
-            <section>
-              <h2 className="text-xl font-semibold text-foreground">Introduction</h2>
-              <p className="mt-4">
-                FadiDev (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) operates mobile applications
-                for iOS and Android. This Privacy Policy explains how we collect,
-                use, and protect your information when you use our apps.
-              </p>
-              <p className="mt-3">
-                By using our apps, you agree to the collection and use of
-                information in accordance with this policy.
-              </p>
-            </section>
-          </FadeIn>
+      <Section title="Information We Collect">
+        <p className="mt-4">
+          None. We do not operate servers, accounts, or backends for our apps.
+          There is no sign-up, and nothing you enter is transmitted to us.
+        </p>
+        <p className="mt-4">Specifically, our apps contain:</p>
+        <ul className="mt-4 list-disc space-y-3 pl-6">
+          <li>No analytics or telemetry SDKs</li>
+          <li>No advertising and no advertising identifiers (IDFA)</li>
+          <li>No user accounts, logins, or profiles</li>
+          <li>No third-party trackers or cookies</li>
+        </ul>
+        <p className="mt-4">
+          Data an app creates — your entries, settings, and content — stays in
+          the app&apos;s storage on your device.
+        </p>
+      </Section>
 
-          <FadeIn>
-            <section>
-              <h2 className="text-xl font-semibold text-foreground">Information We Collect</h2>
-              <p className="mt-4">
-                We are committed to minimal data collection. Our apps may collect
-                the following types of information:
-              </p>
-              <ul className="mt-4 list-disc space-y-3 pl-6">
-                <li>
-                  <strong className="text-foreground">Usage Data:</strong> Anonymous analytics data such as app
-                  usage patterns, crash reports, and performance metrics. This data
-                  does not personally identify you.
-                </li>
-                <li>
-                  <strong className="text-foreground">Device Information:</strong> General device information
-                  such as device type, operating system version, and app version
-                  for compatibility and troubleshooting purposes.
-                </li>
-                <li>
-                  <strong className="text-foreground">Purchase Information:</strong> Transaction data related
-                  to in-app purchases or subscriptions is handled entirely by Apple
-                  (App Store) or Google (Play Store). We do not have access to your
-                  payment details.
-                </li>
-              </ul>
-            </section>
-          </FadeIn>
+      <Section title="What Apple Receives">
+        <p className="mt-4">
+          Our apps are distributed through the App Store, so Apple is involved
+          in two ways we do not control:
+        </p>
+        <ul className="mt-4 list-disc space-y-3 pl-6">
+          <li>
+            <strong className="text-foreground">Purchases:</strong> Any purchase or
+            subscription is processed entirely by Apple. We never see your
+            payment details — only anonymous sales totals in App Store Connect.
+          </li>
+          <li>
+            <strong className="text-foreground">Diagnostics:</strong> If you have
+            turned on <em>Share With App Developers</em> in iOS (Settings &rarr;
+            Privacy &amp; Security &rarr; Analytics &amp; Improvements), Apple may
+            share aggregated crash and usage statistics with us. These reports
+            are aggregated by Apple and do not identify you. You can turn this
+            off at any time in the same place.
+          </li>
+        </ul>
+        <p className="mt-4">
+          See{" "}
+          <a href="https://www.apple.com/legal/privacy/" className="text-foreground underline underline-offset-4" target="_blank" rel="noopener noreferrer">
+            Apple&apos;s Privacy Policy
+          </a>{" "}
+          for how Apple handles that data.
+        </p>
+      </Section>
 
-          <FadeIn>
-            <section>
-              <h2 className="text-xl font-semibold text-foreground">How We Use Your Information</h2>
-              <p className="mt-4">The information we collect is used solely to:</p>
-              <ul className="mt-4 list-disc space-y-3 pl-6">
-                <li>Improve app performance and user experience</li>
-                <li>Identify and fix bugs and crashes</li>
-                <li>Understand general usage trends to guide future development</li>
-              </ul>
-              <p className="mt-4">
-                We do <strong className="text-foreground">not</strong> sell, trade, or rent your personal
-                information to third parties.
-              </p>
-            </section>
-          </FadeIn>
+      <Section title="Data Security">
+        <p className="mt-4">
+          Because we hold no data, there is no database of ours to breach. What
+          lives on your device is protected by iOS and by your device passcode.
+          If you use iCloud Backup, your device backup — including app data —
+          is stored and encrypted under Apple&apos;s terms.
+        </p>
+      </Section>
 
-          <FadeIn>
-            <section>
-              <h2 className="text-xl font-semibold text-foreground">Third-Party Services</h2>
-              <p className="mt-4">Our apps may use the following third-party services:</p>
-              <ul className="mt-4 list-disc space-y-3 pl-6">
-                <li>
-                  <strong className="text-foreground">Analytics:</strong> We may use analytics services (such
-                  as Firebase Analytics or similar tools) to collect anonymous
-                  usage data. These services have their own privacy policies.
-                </li>
-                <li>
-                  <strong className="text-foreground">App Store / Google Play:</strong> Purchases and
-                  subscriptions are processed through the respective platform.
-                  Please refer to{" "}
-                  <a href="https://www.apple.com/legal/privacy/" className="text-accent hover:underline" target="_blank" rel="noopener noreferrer">
-                    Apple&apos;s Privacy Policy
-                  </a>{" "}
-                  and{" "}
-                  <a href="https://policies.google.com/privacy" className="text-accent hover:underline" target="_blank" rel="noopener noreferrer">
-                    Google&apos;s Privacy Policy
-                  </a>{" "}
-                  for details on how they handle your data.
-                </li>
-              </ul>
-            </section>
-          </FadeIn>
+      <Section title="Children's Privacy">
+        <p className="mt-4">
+          Some of our apps are made for families and are appropriate for young
+          children. Because our apps collect no personal information from
+          anyone, they collect none from children either — there is no account
+          to create, no profile to fill in, and nothing transmitted off the
+          device. We therefore do not knowingly hold personal information about
+          a child. If you are a parent or guardian with a question about a
+          specific app, contact us at{" "}
+          <a href="mailto:support@fadidev.app" className="text-foreground underline underline-offset-4">
+            support@fadidev.app
+          </a>.
+        </p>
+      </Section>
 
-          <FadeIn>
-            <section>
-              <h2 className="text-xl font-semibold text-foreground">Advertising</h2>
-              <p className="mt-4">
-                Some of our apps may display advertisements provided by
-                third-party ad networks. These networks may use anonymous
-                identifiers to serve relevant ads. You can opt out of personalized
-                advertising through your device settings (iOS: Settings &rarr;
-                Privacy &rarr; Tracking; Android: Settings &rarr; Google &rarr;
-                Ads).
-              </p>
-            </section>
-          </FadeIn>
+      <Section title="Data Retention and Deletion">
+        <p className="mt-4">
+          We retain nothing, so there is nothing for us to delete. Deleting an
+          app removes its data from your device. If the app supported iCloud
+          sync, also remove it from your iCloud storage in Settings.
+        </p>
+      </Section>
 
-          <FadeIn>
-            <section>
-              <h2 className="text-xl font-semibold text-foreground">Data Security</h2>
-              <p className="mt-4">
-                We take reasonable measures to protect the information collected
-                through our apps. However, no method of electronic transmission or
-                storage is 100% secure, and we cannot guarantee absolute security.
-              </p>
-            </section>
-          </FadeIn>
+      <Section title="Per-App Policies">
+        <p className="mt-4">
+          Each app documents its own storage and permissions:
+        </p>
+        <ul className="mt-4 list-disc space-y-3 pl-6">
+          {apps.map((app) => (
+            <li key={app.slug}>
+              <Link
+                href={`/apps/${app.slug}/privacy`}
+                className="text-foreground underline underline-offset-4"
+              >
+                {app.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Section>
 
-          <FadeIn>
-            <section>
-              <h2 className="text-xl font-semibold text-foreground">Children&apos;s Privacy (COPPA)</h2>
-              <p className="mt-4">
-                Our apps are not directed at children under the age of 13. We do
-                not knowingly collect personal information from children under 13.
-                If we become aware that a child under 13 has provided us with
-                personal information, we will take steps to delete that information
-                immediately. If you are a parent or guardian and believe your child
-                has provided us with personal information, please contact us at{" "}
-                <a href="mailto:support@fadidev.app" className="text-accent hover:underline">
-                  support@fadidev.app
-                </a>.
-              </p>
-            </section>
-          </FadeIn>
+      <Section title="Changes to This Policy">
+        <p className="mt-4">
+          We may update this Privacy Policy from time to time. Any changes
+          will be posted on this page with an updated revision date. We
+          encourage you to review this policy periodically.
+        </p>
+      </Section>
 
-          <FadeIn>
-            <section>
-              <h2 className="text-xl font-semibold text-foreground">Data Retention and Deletion</h2>
-              <p className="mt-4">
-                We retain anonymous analytics data only for as long as necessary to
-                fulfill the purposes described in this policy. If you would like to
-                request the deletion of any data associated with your use of our
-                apps, please contact us at{" "}
-                <a href="mailto:support@fadidev.app" className="text-accent hover:underline">
-                  support@fadidev.app
-                </a>.
-              </p>
-            </section>
-          </FadeIn>
-
-          <FadeIn>
-            <section>
-              <h2 className="text-xl font-semibold text-foreground">Changes to This Policy</h2>
-              <p className="mt-4">
-                We may update this Privacy Policy from time to time. Any changes
-                will be posted on this page with an updated revision date. We
-                encourage you to review this policy periodically.
-              </p>
-            </section>
-          </FadeIn>
-
-          <FadeIn>
-            <section>
-              <h2 className="text-xl font-semibold text-foreground">Contact Us</h2>
-              <p className="mt-4">
-                If you have any questions or concerns about this Privacy Policy,
-                please contact us at:{" "}
-                <a href="mailto:support@fadidev.app" className="text-accent hover:underline">
-                  support@fadidev.app
-                </a>
-              </p>
-            </section>
-          </FadeIn>
-        </div>
-      </div>
-    </div>
+      <Section title="Contact Us">
+        <p className="mt-4">
+          If you have any questions or concerns about this Privacy Policy,
+          please contact us at:{" "}
+          <a href="mailto:support@fadidev.app" className="text-foreground underline underline-offset-4">
+            support@fadidev.app
+          </a>
+        </p>
+      </Section>
+    </LegalPage>
   );
 }

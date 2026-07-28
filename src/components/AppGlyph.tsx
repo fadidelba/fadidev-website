@@ -78,6 +78,25 @@ export default function AppGlyph({
           <path d="M8 24.2h12" strokeWidth="1.4" opacity="0.55" />
         </svg>
       );
+    case "dardarija":
+      return (
+        <svg {...common}>
+          {/* dar = house: the shared space, not a single-learner trainer */}
+          <path d="M4.5 13.4 14 5.2l9.5 8.2" />
+          <path d="M7 12.2v10.6h14V12.2" opacity="0.85" />
+          <path d="M5.4 22.8h17.2" strokeWidth="1.4" opacity="0.55" />
+          {/* three voices join the room, one after another, on hover */}
+          <g className="voice-dot">
+            <circle cx="10.2" cy="18" r="1.5" fill="currentColor" stroke="none" />
+          </g>
+          <g className="voice-dot" style={{ animationDelay: "0.12s" }}>
+            <circle cx="14" cy="18" r="1.5" fill="currentColor" stroke="none" />
+          </g>
+          <g className="voice-dot" style={{ animationDelay: "0.24s" }}>
+            <circle cx="17.8" cy="18" r="1.5" fill="currentColor" stroke="none" />
+          </g>
+        </svg>
+      );
     default:
       return (
         <svg {...common}>

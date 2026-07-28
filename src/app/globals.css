@@ -343,6 +343,17 @@ body::after {
   transform-origin: 14px 18.5px;
 }
 
+/* Dar Darija: the family's voices join the room one by one */
+@keyframes voice-in {
+  from { transform: scale(0.4); opacity: 0.25; }
+  to   { transform: scale(1); opacity: 1; }
+}
+.group:hover .voice-dot {
+  animation: voice-in 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -354,7 +365,8 @@ body::after {
   .group:hover .knight-piece,
   .group:hover .scan-line,
   .group:hover .settle-bar,
-  .group:hover .needle {
+  .group:hover .needle,
+  .group:hover .voice-dot {
     animation: none;
   }
   .device:hover {

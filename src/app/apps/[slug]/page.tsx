@@ -152,6 +152,11 @@ export default async function AppPage({ params }: Props) {
               <Link href={`/apps/${app.slug}/privacy`} className="underline decoration-border-strong underline-offset-4 transition-colors hover:decoration-current">
                 Privacy
               </Link>
+              {app.hasTerms && (
+                <Link href={`/apps/${app.slug}/terms`} className="underline decoration-border-strong underline-offset-4 transition-colors hover:decoration-current">
+                  Terms
+                </Link>
+              )}
             </div>
           </div>
         </div>

@@ -1,23 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { apps } from "@/data/apps";
+import { notes } from "@/data/notes";
 
 export const metadata: Metadata = {
   title: "Notes from the workbench",
   description:
     "Development notes from building small iOS apps — bugs, dead ends, and small wins.",
 };
-
-// ponytail: a plain array beats a CMS until there are more notes than fit on one screen
-const notes = [
-  {
-    slug: "knight-tour-solver-bug",
-    date: "2026-07-21",
-    app: "Knight Grid",
-    title: "The solver bug that called solvable boards impossible",
-    teaser:
-      "A search cap is a timeout, not a proof — how I nearly shipped a solver that lied about which boards were solvable.",
-  },
-];
 
 export default function WritingIndexPage() {
   return (
@@ -40,7 +30,7 @@ export default function WritingIndexPage() {
               className="group block border-t border-border py-8"
             >
               <p className="spec-label text-faint">
-                {note.date} · {note.app}
+                {note.date} · {apps.find((a) => a.slug === note.app)?.name}
               </p>
               <h2 className="mt-2 max-w-[40ch] font-display text-xl font-bold tracking-tight underline decoration-transparent underline-offset-4 transition-colors group-hover:decoration-current sm:text-2xl">
                 {note.title}

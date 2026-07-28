@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { apps } from "@/data/apps";
+import { notes } from "@/data/notes";
 import AppGlyph from "@/components/AppGlyph";
 import { AppStoreButton } from "@/components/StoreBadges";
 
@@ -149,19 +150,18 @@ export default function HomePage() {
             all notes →
           </Link>
         </div>
-        <Link href="/writing/knight-tour-solver-bug" className="group mt-8 block max-w-[72ch]">
-          <p className="font-mono text-[12px] text-faint">
-            2026-07-21 <span className="mx-2 text-border-strong">{"//"}</span>
-            knight-grid
-          </p>
-          <h3 className="mt-2 font-display text-xl font-bold underline decoration-transparent underline-offset-4 group-hover:decoration-current sm:text-2xl">
-            The solver bug that called solvable boards impossible
-          </h3>
-          <p className="mt-2 text-sm leading-relaxed text-muted">
-            A search cap is a timeout, not a proof — how I nearly shipped a
-            solver that lied about which boards were solvable.
-          </p>
-        </Link>
+        {notes.slice(0, 1).map((note) => (
+          <Link key={note.slug} href={`/writing/${note.slug}`} className="group mt-8 block max-w-[72ch]">
+            <p className="font-mono text-[12px] text-faint">
+              {note.date} <span className="mx-2 text-border-strong">{"//"}</span>
+              {note.app}
+            </p>
+            <h3 className="mt-2 font-display text-xl font-bold underline decoration-transparent underline-offset-4 group-hover:decoration-current sm:text-2xl">
+              {note.title}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{note.teaser}</p>
+          </Link>
+        ))}
       </section>
 
       {/* Why so small — one voice, no cards */}

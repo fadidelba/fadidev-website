@@ -7,9 +7,12 @@ export interface AppInfo {
   status: "live" | "in-development";
   specs: string[]; // short true facts, rendered as mono labels
   features: string[];
+  // Every app has src/app/apps/<slug>/privacy/; terms is optional (a paid app
+  // on the standard Apple EULA needs none). The Footer reads this instead of
+  // keeping its own slug list. scripts/check-catalog.ts enforces both against disk.
+  hasTerms: boolean;
   screenshots?: number; // count of files in /public/apps/<slug>/{1..n}.png
   appStoreUrl?: string;
-  playStoreUrl?: string;
 }
 
 export const apps: AppInfo[] = [
@@ -32,6 +35,7 @@ export const apps: AppInfo[] = [
       "Accessible: Dynamic Type and VoiceOver",
       "7 languages supported",
     ],
+    hasTerms: false,
     screenshots: 3,
     appStoreUrl: "https://apps.apple.com/app/id6759575829",
   },
@@ -60,6 +64,7 @@ export const apps: AppInfo[] = [
       "Privacy-first: no account, no tracking, no ads; code content never leaves the device",
       "German, English, Spanish and French; light, dark and system themes",
     ],
+    hasTerms: true,
   },
   {
     slug: "quietnights",
@@ -82,6 +87,7 @@ export const apps: AppInfo[] = [
       "Shareable PDF reports for a partner or pediatrician (Pro)",
       "Privacy-first: on-device only, no account, no audio ever recorded",
     ],
+    hasTerms: true,
   },
   {
     slug: "miletally",
@@ -101,5 +107,25 @@ export const apps: AppInfo[] = [
       "CSV Earnings Import",
       "Schedule C PDF Export",
     ],
+    hasTerms: true,
+  },
+  {
+    slug: "dardarija",
+    name: "Dar Darija",
+    tagline: "Learn Moroccan Arabic as a family",
+    description:
+      "A family app for learning Darija (Moroccan Arabic) together — three age-appropriate modes over one shared vocabulary, from age 4 to grown-ups. Not a solo drill trainer but a shared house: progress belongs to the family, parents listen back to their kids' recordings, and conversation prompts push you out of the app and onto the actual dinner table. Offline, no account, no ads.",
+    iconColor: "oklch(70% 0.16 165)",
+    status: "in-development",
+    specs: ["iOS", "offline", "no account", "ages 4+"],
+    features: [
+      "Explore mode",
+      "Adventure mode",
+      "Recordings with a parent's thumbs-up",
+      "Invisible spaced repetition",
+      "Shared family progress",
+      "Conversation prompts for the dinner table",
+    ],
+    hasTerms: true,
   },
 ];

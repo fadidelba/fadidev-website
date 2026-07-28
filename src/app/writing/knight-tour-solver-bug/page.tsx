@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import FadeIn from "@/components/FadeIn";
 import Link from "next/link";
+import { notes } from "@/data/notes";
+
+const note = notes.find((n) => n.slug === "knight-tour-solver-bug")!;
 
 export const metadata: Metadata = {
   title: "The Knight's Tour solver bug that called solvable boards impossible",
@@ -25,7 +27,7 @@ export default function KnightTourSolverBugPage() {
   return (
     <div className="px-6 pt-16 pb-24">
       <article className="mx-auto max-w-2xl">
-        <FadeIn>
+        <div>
           <Link
             href="/apps/knightgrid"
             className="inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-foreground"
@@ -38,11 +40,11 @@ export default function KnightTourSolverBugPage() {
           <h1 className="mt-8 font-display text-3xl font-bold tracking-tight sm:text-4xl">
             The Knight&apos;s Tour solver bug that called solvable boards impossible
           </h1>
-          <p className="mt-4 text-sm text-muted">2026-07-21</p>
-        </FadeIn>
+          <p className="mt-4 text-sm text-muted">{note.date}</p>
+        </div>
 
         <div className="mt-14 space-y-6 text-[16px] leading-[1.75] text-muted">
-          <FadeIn>
+          <div>
             <p>
               I built a small iOS app for the Knight&apos;s Tour — the puzzle where a
               knight has to visit every square of a board exactly once. One of its
@@ -56,9 +58,9 @@ export default function KnightTourSolverBugPage() {
               solution&rdquo; about 40% of the time. Not always. Just often enough
               that I couldn&apos;t reproduce it on demand and nearly shipped it.
             </p>
-          </FadeIn>
+          </div>
 
-          <FadeIn>
+          <div>
             <h2 className="pt-8 text-xl font-semibold text-foreground">The solver</h2>
             <p className="mt-4">
               It&apos;s Warnsdorff&apos;s heuristic with backtracking: at each step
@@ -88,9 +90,9 @@ export default function KnightTourSolverBugPage() {
               to stumble into one before the cap. Small-but-not-tiny boards are the
               danger zone.
             </p>
-          </FadeIn>
+          </div>
 
-          <FadeIn>
+          <div>
             <h2 className="pt-8 text-xl font-semibold text-foreground">The fix</h2>
             <p className="mt-4">
               Almost embarrassingly small: separate &ldquo;I ran out of time&rdquo;
@@ -112,9 +114,9 @@ for _ in 0..<maxRestarts {          // maxRestarts = 15
               gets a fresh roll instead of a false verdict. Verified across the
               danger-zone boards: 40% → 0%.
             </p>
-          </FadeIn>
+          </div>
 
-          <FadeIn>
+          <div>
             <h2 className="pt-8 text-xl font-semibold text-foreground">The lesson</h2>
             <p className="mt-4">
               The one I keep relearning:{" "}
@@ -125,9 +127,9 @@ for _ in 0..<maxRestarts {          // maxRestarts = 15
               different answers, and conflating them is how you confidently tell
               someone a solvable puzzle can&apos;t be solved.
             </p>
-          </FadeIn>
+          </div>
 
-          <FadeIn>
+          <div>
             <div className="mt-14 rounded-2xl border border-border bg-background-secondary p-6">
               <p className="text-[15px] text-muted">
                 This is from building{" "}
@@ -146,7 +148,7 @@ for _ in 0..<maxRestarts {          // maxRestarts = 15
                 </svg>
               </Link>
             </div>
-          </FadeIn>
+          </div>
         </div>
       </article>
     </div>

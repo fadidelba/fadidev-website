@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Not TSX until an agent substitutes {{PLACEHOLDERS}} — never parses.
+    "templates/**",
   ]),
 ]);
 

@@ -14,10 +14,7 @@ export default function Footer() {
   const app = appSlug ? apps.find((a) => a.slug === appSlug) : null;
 
   const privacyHref = app ? `/apps/${app.slug}/privacy` : "/privacy";
-  // Knight Grid has no per-app terms (paid app, standard Apple EULA)
-  const APPS_WITH_TERMS = new Set(["qrisp", "quietnights", "miletally"]);
-  const termsHref =
-    app && APPS_WITH_TERMS.has(app.slug) ? `/apps/${app.slug}/terms` : "/terms";
+  const termsHref = app?.hasTerms ? `/apps/${app.slug}/terms` : "/terms";
 
   return (
     <footer className="crosshair border-t border-border">
