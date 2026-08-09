@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function MiletallyTermsPage() {
   return (
-    <LegalPage title="Terms of Service" app="miletally" lastUpdated="2026-07-23">
+    <LegalPage title="Terms of Service" app="miletally" lastUpdated="2026-08-10">
       <Section title="Acceptance of Terms">
         <p className="mt-4">
           By downloading, installing, or using MileTally (&quot;the App&quot;),
@@ -139,7 +139,11 @@ export default function MiletallyTermsPage() {
           liable for any indirect, incidental, special, consequential, or punitive
           damages, or any loss of profits or revenues, whether incurred directly
           or indirectly, or any loss of data, use, or goodwill arising out of your
-          use of MileTally.
+          use of MileTally. In particular, we are not liable for any tax
+          penalties, interest, disallowed deductions, or other tax outcomes
+          resulting from figures, estimates, or documents produced by the App —
+          you are solely responsible for the accuracy of any tax filing you or
+          your tax professional prepare.
         </p>
       </Section>
 
