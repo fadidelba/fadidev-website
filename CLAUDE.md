@@ -9,8 +9,15 @@ them rather than restating names, taglines or slugs. Run `npm run check`
 catalog and the files on disk disagree.
 
 Legal pages are `<LegalPage>` + `<Section>` (`src/components/LegalPage.tsx`);
-`templates/` generates new ones. The apps are iOS-only, collect nothing, and
-carry no ads or analytics — legal copy must not claim otherwise.
+`templates/` generates new ones. The apps are iOS-only and legal copy must not
+claim more privacy than an app actually delivers.
+
+Most apps collect nothing and carry no ads or analytics — but **Knight Grid is
+the exception since 2026-08-24**: it went free and now serves Google AdMob ads,
+so it sends IP address, device/advertising identifiers, ad and interaction data
+and diagnostics to Google, behind a consent dialog. Do not "restore" blanket
+no-ads/no-tracking wording for it, on its pages or in the site-wide copy on
+`src/app/layout.tsx` and `src/app/page.tsx`.
 
 ## Agent skills
 

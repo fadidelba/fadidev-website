@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | FadiDev",
   },
   description:
-    "FadiDev is a one-person app workshop making small, careful iOS apps. No accounts, no ads, no tracking — buy once, own it.",
+    "FadiDev is a one-person app workshop making small, careful iOS apps. Each one does a single job and runs on your device. No accounts, ever.",
   openGraph: {
     type: "website",
     locale: "en_US",

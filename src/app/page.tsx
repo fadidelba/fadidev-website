@@ -25,9 +25,9 @@ export default function HomePage() {
         </h1>
         <p className="rise rise-2 mt-8 max-w-[52ch] text-lg leading-relaxed text-muted">
           I&apos;m Fadi. In a one-person workshop in Germany I build small,
-          careful apps for iOS — each one does a single job, runs entirely on
-          your device, and is yours with one purchase. No accounts, no ads, no
-          tracking.
+          careful apps for iOS — each one does a single job and runs entirely on
+          your device. No accounts, ever. Most are yours for a single purchase,
+          with no ads; Knight Grid is free and funded by them.
         </p>
       </section>
 

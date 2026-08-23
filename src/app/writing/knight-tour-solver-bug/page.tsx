@@ -134,9 +134,9 @@ for _ in 0..<maxRestarts {          // maxRestarts = 15
               <p className="text-[15px] text-muted">
                 This is from building{" "}
                 <strong className="text-foreground">Knight Grid</strong> — a calm,
-                native Knight&apos;s Tour game for iPhone and iPad. No ads, no
-                tracking, works fully offline. Solve tours by hand, race a timed
-                mode, or watch the solver trace a perfect path.
+                native Knight&apos;s Tour game for iPhone and iPad. Free, and the
+                puzzles work offline. Solve tours by hand, race a timed mode, or
+                watch the solver trace a perfect path.
               </p>
               <Link
                 href="/apps/knightgrid"

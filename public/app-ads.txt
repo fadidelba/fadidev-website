@@ -1,0 +1,6 @@
+# app-ads.txt — IAB Tech Lab authorized sellers for FadiDev apps.
+# Served at https://www.fadidev.app/app-ads.txt, the developer website listed on the
+# App Store product pages. AdMob crawls it to verify app ownership; without it apps
+# stay in "limited ad serving".
+# One line covers every FadiDev app, since they all share one AdMob publisher account.
+google.com, pub-3921742238833188, DIRECT, f08c47fec0942fa0
