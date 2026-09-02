@@ -11,8 +11,8 @@ export default function HomePage() {
   // the featured app's plate, read like an instrument label
   const plate: [string, string][] = [
     ["platform", "iOS 17+"],
-    ["price", "€1.99, once"],
-    ["network", "none — fully offline"],
+    ["price", "free, ad-funded"],
+    ["network", "ads only — the puzzles play offline"],
     ["languages", "7"],
   ];
 
@@ -26,8 +26,8 @@ export default function HomePage() {
         <p className="rise rise-2 mt-8 max-w-[52ch] text-lg leading-relaxed text-muted">
           I&apos;m Fadi. In a one-person workshop in Germany I build small,
           careful apps for iOS — each one does a single job and runs entirely on
-          your device. No accounts, ever. Most are yours for a single purchase,
-          with no ads; Knight Grid is free and funded by them.
+          your device. No accounts, ever. Right now that&apos;s one app: Knight
+          Grid, free and funded by ads between games.
         </p>
       </section>
 
@@ -171,10 +171,11 @@ export default function HomePage() {
         </h2>
         <div className="max-w-[60ch] space-y-5 text-[15px] leading-relaxed text-muted lg:pt-1">
           <p>
-            Every app here follows the same three rules: it runs on your
-            device, you buy it once, and it does one job well. There&apos;s no
-            server behind any of them — nothing to sign into, nothing phoning
-            home, nothing that stops working when a startup pivots.
+            Every app here follows the same two rules: it runs on your device,
+            and it does one job well. There&apos;s no server behind it — nothing
+            to sign into, nothing that stops working when a startup pivots. The
+            only thing that reaches the network is the ad Knight Grid shows
+            between games, and only after you agree to it.
           </p>
           <p>
             That&apos;s not a business strategy, it&apos;s just the kind of

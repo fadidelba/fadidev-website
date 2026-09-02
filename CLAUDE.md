@@ -12,12 +12,16 @@ Legal pages are `<LegalPage>` + `<Section>` (`src/components/LegalPage.tsx`);
 `templates/` generates new ones. The apps are iOS-only and legal copy must not
 claim more privacy than an app actually delivers.
 
-Most apps collect nothing and carry no ads or analytics — but **Knight Grid is
-the exception since 2026-08-24**: it went free and now serves Google AdMob ads,
-so it sends IP address, device/advertising identifiers, ad and interaction data
-and diagnostics to Google, behind a consent dialog. Do not "restore" blanket
-no-ads/no-tracking wording for it, on its pages or in the site-wide copy on
-`src/app/layout.tsx` and `src/app/page.tsx`.
+Since 2026-09-02 the catalog holds **one app: Knight Grid**. Qrisp, QuietNights,
+MileTally and Dar Darija were discontinued and their pages deleted; MarocZone
+(live in the App Store) is deliberately not on the site yet.
+
+Knight Grid is free and serves Google AdMob ads, so it sends IP address,
+device/advertising identifiers, ad and interaction data and diagnostics to
+Google, behind a consent dialog. Do not "restore" blanket no-ads/no-tracking
+wording for it, on its pages or in the site-wide copy on `src/app/layout.tsx`
+and `src/app/page.tsx` — with a one-app catalog, any site-wide sentence about
+"the apps" is a sentence about an ad-funded app.
 
 ## Agent skills
 

@@ -32,14 +32,25 @@ export default function PrivacyPage() {
         </p>
         <p className="mt-4">Specifically, our apps contain:</p>
         <ul className="mt-4 list-disc space-y-3 pl-6">
-          <li>No analytics or telemetry SDKs</li>
-          <li>No advertising and no advertising identifiers (IDFA)</li>
+          <li>No analytics or telemetry SDKs of our own</li>
           <li>No user accounts, logins, or profiles</li>
-          <li>No third-party trackers or cookies</li>
+          <li>No third-party trackers or cookies we control</li>
         </ul>
         <p className="mt-4">
           Data an app creates — your entries, settings, and content — stays in
           the app&apos;s storage on your device.
+        </p>
+        <p className="mt-4">
+          <strong className="text-foreground">Advertising is the exception.</strong>{" "}
+          Knight Grid is free and funded by ads served through Google AdMob. When
+          it shows one, Google — not us — receives your IP address, device and
+          advertising identifiers, and ad interaction and diagnostic data, and
+          uses it for its own analytics. Nothing is requested before you answer
+          the consent dialog, and we only ever see aggregate earnings.{" "}
+          <Link href="/apps/knightgrid/privacy" className="underline underline-offset-4 hover:text-term">
+            Knight Grid&apos;s own policy
+          </Link>{" "}
+          spells this out in full.
         </p>
       </Section>
 
