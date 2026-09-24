@@ -1,14 +1,6 @@
 import type { Metadata } from "next";
 import LegalPage, { Section } from "@/components/LegalPage";
 
-/*
- * Mine Grid is not in src/data/apps.ts yet — the catalog is a public shop
- * window and the game has not shipped. This page stands on its own so the
- * privacy URL baked into the app (and given to App Store Connect) resolves
- * before release. When Mine Grid goes live, add it to the catalog and pass
- * app="minegrid" to LegalPage for the back-link.
- */
-
 export const metadata: Metadata = {
   title: "Privacy Policy — Mine Grid",
   description: "Privacy Policy for Mine Grid — a minesweeper you never have to guess at.",
@@ -16,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function MinegridPrivacyPage() {
   return (
-    <LegalPage title="Privacy Policy" lastUpdated="2026-09-22">
+    <LegalPage title="Privacy Policy" app="minegrid" lastUpdated="2026-09-22">
       <Section title="The short version">
         <p className="mt-4">
           <strong className="text-foreground">

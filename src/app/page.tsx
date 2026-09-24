@@ -8,14 +8,6 @@ import { AppStoreButton } from "@/components/StoreBadges";
 export default function HomePage() {
   const featured = apps.find((a) => a.status === "live") ?? apps[0];
 
-  // the featured app's plate, read like an instrument label
-  const plate: [string, string][] = [
-    ["platform", "iOS 17+"],
-    ["price", "free, ad-funded"],
-    ["network", "ads only — the puzzles play offline"],
-    ["languages", "7"],
-  ];
-
   return (
     <>
       {/* Hero */}
@@ -26,8 +18,8 @@ export default function HomePage() {
         <p className="rise rise-2 mt-8 max-w-[52ch] text-lg leading-relaxed text-muted">
           I&apos;m Fadi. In a one-person workshop in Germany I build small,
           careful apps for iOS — each one does a single job and runs entirely on
-          your device. No accounts, ever. Right now that&apos;s one app: Knight
-          Grid, free and funded by ads between games.
+          your device. No accounts, ever. Right now that&apos;s two games: Mine
+          Grid and Knight Grid, both free and funded by ads between rounds.
         </p>
       </section>
 
@@ -82,7 +74,7 @@ export default function HomePage() {
         >
           <div className="flex flex-col justify-center pb-14 sm:pb-16">
             <p className="spec-label" style={{ color: "var(--app-tone)" }}>
-              001 / shipped
+              latest / shipped
             </p>
             <h2 className="mt-4 font-display text-3xl font-extrabold uppercase sm:text-4xl">
               {featured.name}
@@ -98,7 +90,7 @@ export default function HomePage() {
               className="mt-8 max-w-sm border font-mono text-[12px]"
               style={{ borderColor: "var(--app-line)" }}
             >
-              {plate.map(([k, v]) => (
+              {featured.plate.map(([k, v]) => (
                 <div
                   key={k}
                   className="flex justify-between gap-6 border-t px-4 py-2 first:border-t-0"
@@ -126,12 +118,12 @@ export default function HomePage() {
             <div className="relative mx-auto flex w-full max-w-[440px] items-end justify-center self-end lg:mx-0">
               <div className="w-[47%] -rotate-2 translate-y-5">
                 <div className="tilt-in device">
-                  <Image src={`/apps/${featured.slug}/1.png`} alt={`${featured.name} — puzzle mode`} width={405} height={880} priority />
+                  <Image src={`/apps/${featured.slug}/1.png`} alt={`${featured.name} screenshot 1`} width={405} height={880} priority />
                 </div>
               </div>
               <div className="z-10 -ml-8 w-[52%] rotate-1 translate-y-12">
                 <div className="tilt-in device">
-                  <Image src={`/apps/${featured.slug}/2.png`} alt={`${featured.name} — mission mode`} width={405} height={880} priority />
+                  <Image src={`/apps/${featured.slug}/2.png`} alt={`${featured.name} screenshot 2`} width={405} height={880} priority />
                 </div>
               </div>
             </div>
@@ -174,8 +166,8 @@ export default function HomePage() {
             Every app here follows the same two rules: it runs on your device,
             and it does one job well. There&apos;s no server behind it — nothing
             to sign into, nothing that stops working when a startup pivots. The
-            only thing that reaches the network is the ad Knight Grid shows
-            between games, and only after you agree to it.
+            only thing that reaches the network is the ads the games show
+            between rounds, and only after you agree to them.
           </p>
           <p>
             That&apos;s not a business strategy, it&apos;s just the kind of

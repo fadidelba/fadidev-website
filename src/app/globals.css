@@ -311,6 +311,16 @@ body::after {
   animation: knight-hop 0.6s cubic-bezier(0.34, 1.2, 0.64, 1) both;
 }
 
+/* Flag drops into its square and settles, like a long-press on a tile. */
+@keyframes flag-plant {
+  0%   { transform: translateY(-5px); opacity: 0; }
+  60%  { transform: translateY(0.8px); opacity: 1; }
+  100% { transform: translateY(0); }
+}
+.group:hover .mine-flag {
+  animation: flag-plant 0.5s cubic-bezier(0.34, 1.2, 0.64, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -319,7 +329,8 @@ body::after {
   .boot,
   .tilt-in,
   .cursor::after,
-  .group:hover .knight-piece {
+  .group:hover .knight-piece,
+  .group:hover .mine-flag {
     animation: none;
   }
   .device:hover {
