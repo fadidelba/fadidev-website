@@ -1,7 +1,7 @@
 /*
  * Hand-drawn marks for each app, one per slug, on a shared 28×28 grid.
  * Each mark has a small hover behaviour (driven by .group in globals.css):
- * the knight hops an L, the flag gets planted, the scanner sweeps, the sound bars fall asleep,
+ * the knight hops an L, the flag gets planted, the kakuro digits fill in, the scanner sweeps, the sound bars fall asleep,
  * the road rolls. Color comes from currentColor so each app world tints it.
  */
 export default function AppGlyph({
@@ -52,6 +52,22 @@ export default function AppGlyph({
           <g className="mine-flag">
             <path d="M10 21.5V7" />
             <path d="M10.4 7.2h7.6l-2 2.9 2 2.9h-7.6z" fill="currentColor" stroke="none" />
+          </g>
+        </svg>
+      );
+    case "kakurogrid":
+      return (
+        <svg {...common}>
+          {/* 3×3 board */}
+          <path d="M4 11.33h20M4 18.66h20M11.33 4v20M18.66 4v20" strokeWidth="1" opacity="0.28" />
+          <rect x="4" y="4" width="20" height="20" rx="2.5" strokeWidth="1.2" opacity="0.55" />
+          {/* the clue cell: filled square split by its diagonal */}
+          <rect x="4.6" y="4.6" width="6.1" height="6.1" rx="1.2" fill="currentColor" stroke="none" opacity="0.45" />
+          <path d="M5.4 5.4l4.5 4.5" strokeWidth="1.1" opacity="0.9" />
+          {/* the run it sums: two digits placed by logic */}
+          <g className="kakuro-digits">
+            <circle cx="15" cy="7.67" r="1.7" fill="currentColor" stroke="none" />
+            <circle cx="7.67" cy="15" r="1.7" fill="currentColor" stroke="none" />
           </g>
         </svg>
       );

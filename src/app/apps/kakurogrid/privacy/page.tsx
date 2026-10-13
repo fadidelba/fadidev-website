@@ -1,5 +1,3 @@
-// Kakuro Grid is not in src/data/apps.ts until it is live in the App Store, so this page
-// renders without `app=` (an unknown slug breaks the build). Add `app="kakurogrid"` at launch.
 import type { Metadata } from "next";
 import LegalPage, { Section } from "@/components/LegalPage";
 
@@ -10,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function KakurogridPrivacyPage() {
   return (
-    <LegalPage title="Privacy Policy" lastUpdated="2026-09-29">
+    <LegalPage title="Privacy Policy" app="kakurogrid" lastUpdated="2026-09-29">
       <Section title="The short version">
         <p className="mt-4">
           <strong className="text-foreground">

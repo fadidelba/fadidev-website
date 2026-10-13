@@ -20,6 +20,36 @@ export interface AppInfo {
 // Newest first: the first live app is the one the home page features.
 export const apps: AppInfo[] = [
   {
+    slug: "kakurogrid",
+    name: "Kakuro Grid",
+    tagline: "Cross sums without the guess",
+    description:
+      "Every puzzle in Kakuro Grid is proved to have exactly one solution and is solved end to end by the same logic engine that powers the hint button, before you ever see it. Boards from 6×6 to 12×12, three ways to play, and the puzzles need no connection.",
+    iconColor: "#3a5c9c",
+    status: "live",
+    specs: ["iOS", "free", "plays offline", "8 languages"],
+    features: [
+      "Never guess — every board has exactly one solution and can be finished by logic alone",
+      "Hints that explain — the next step names the technique, marks the cells and says why",
+      "Combination helper — tap a clue and see every digit set for that length and sum",
+      "Notes like on paper, unlimited undo, and a bookmark to try a branch and jump back",
+      "Classic, Journey and Daily — 6×6 to 12×12, from Easy to Expert",
+      "A techniques school that teaches the logic one move at a time",
+      "Game Center leaderboards and achievements, best times for every size",
+      "Free, funded by an ad after a puzzle — never during one; one purchase removes them",
+      "8 languages supported",
+    ],
+    plate: [
+      ["platform", "iOS 26+"],
+      ["price", "free, ad-funded"],
+      ["network", "ads only — the puzzles play offline"],
+      ["languages", "8"],
+    ],
+    hasTerms: false,
+    screenshots: 3,
+    appStoreUrl: "https://apps.apple.com/app/id6817269735",
+  },
+  {
     slug: "minegrid",
     name: "Mine Grid",
     tagline: "Minesweeper without the guess",
