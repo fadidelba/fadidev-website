@@ -18,8 +18,8 @@ export default function HomePage() {
         <p className="rise rise-2 mt-8 max-w-[52ch] text-lg leading-relaxed text-muted">
           I&apos;m Fadi. In a one-person workshop in Germany I build small,
           careful apps for iOS — each one does a single job and runs entirely on
-          your device. No accounts, ever. Right now that&apos;s three games: Kakuro
-          Grid, Mine Grid and Knight Grid, all free and funded by ads between rounds.
+          your device. No accounts, ever. Right now that&apos;s four games: Sum
+          Grid, Kakuro Grid, Mine Grid and Knight Grid, all free and funded by ads between rounds.
         </p>
       </section>
 

@@ -42,7 +42,7 @@ export default function PrivacyPage() {
         </p>
         <p className="mt-4">
           <strong className="text-foreground">Advertising is the exception.</strong>{" "}
-          Knight Grid, Mine Grid and Kakuro Grid are free and funded by ads served through
+          Knight Grid, Mine Grid, Kakuro Grid and Sum Grid are free and funded by ads served through
           Google AdMob. When one shows an ad, Google — not us — receives your IP address, device and
           advertising identifiers, and ad interaction and diagnostic data, and
           uses it for its own analytics. Nothing is requested before you answer
@@ -58,6 +58,10 @@ export default function PrivacyPage() {
           ,{" "}
           <Link href="/apps/kakurogrid/privacy" className="underline underline-offset-4 hover:text-term">
             Kakuro Grid
+          </Link>
+          ,{" "}
+          <Link href="/apps/sumgrid/privacy" className="underline underline-offset-4 hover:text-term">
+            Sum Grid
           </Link>{" "}
           — spells this out in full.
         </p>

@@ -1,7 +1,7 @@
 /*
  * Hand-drawn marks for each app, one per slug, on a shared 28×28 grid.
  * Each mark has a small hover behaviour (driven by .group in globals.css):
- * the knight hops an L, the flag gets planted, the kakuro digits fill in, the scanner sweeps, the sound bars fall asleep,
+ * the knight hops an L, the flag gets planted, the kakuro digits fill in, the cage adds up, the scanner sweeps, the sound bars fall asleep,
  * the road rolls. Color comes from currentColor so each app world tints it.
  */
 export default function AppGlyph({
@@ -69,6 +69,19 @@ export default function AppGlyph({
             <circle cx="15" cy="7.67" r="1.7" fill="currentColor" stroke="none" />
             <circle cx="7.67" cy="15" r="1.7" fill="currentColor" stroke="none" />
           </g>
+        </svg>
+      );
+    case "sumgrid":
+      return (
+        <svg {...common}>
+          {/* 3×3 board */}
+          <path d="M4 11.33h20M4 18.66h20M11.33 4v20M18.66 4v20" strokeWidth="1" opacity="0.28" />
+          <rect x="4" y="4" width="20" height="20" rx="2.5" strokeWidth="1.2" opacity="0.55" />
+          {/* an L-shaped cage: a dashed outline, its tray fills in when the sum is met */}
+          <path className="sum-cage" d="M5.6 5.6h11.5v4.2h-7.3v7.3H5.6z" fill="currentColor" stroke="none" opacity="0.3" />
+          <path d="M5.6 5.6h11.5v4.2h-7.3v7.3H5.6z" strokeWidth="1.5" strokeDasharray="2 1.3" />
+          {/* the sum tab in the cage's corner */}
+          <rect x="6.6" y="6.6" width="4.4" height="2.8" rx="0.9" fill="currentColor" stroke="none" />
         </svg>
       );
     default:

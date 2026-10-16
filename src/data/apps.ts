@@ -20,6 +20,37 @@ export interface AppInfo {
 // Newest first: the first live app is the one the home page features.
 export const apps: AppInfo[] = [
   {
+    slug: "sumgrid",
+    name: "Sum Grid",
+    tagline: "Killer Sudoku without the guess",
+    description:
+      "Every puzzle in Sum Grid is proved to have exactly one solution and is solved end to end by the same logic engine that powers the hint button, before you ever see it. Classic Killer Sudoku from Beginner 6×6 to Expert 9×9, three ways to play, and the puzzles need no connection.",
+    iconColor: "#c8664f",
+    status: "live",
+    specs: ["iOS", "free", "plays offline", "8 languages"],
+    features: [
+      "Never guess — every board has exactly one solution and can be finished by logic alone",
+      "Hints that explain — the next step names the technique, marks the cells and says why",
+      "Combination helper — select a cage and see every digit set for its size and sum",
+      "Cages you can read — soft tinted trays with the sum on a tab, or classic newspaper lines",
+      "Journey — climb ten monuments to the Summit, one block for every solved level",
+      "Classic and Daily — Beginner 6×6, then 9×9 from Easy to Expert; the puzzles never run out",
+      "A techniques school, from unique combinations and the 45 rule to What if",
+      "Game Center leaderboards and achievements, best times for every size",
+      "Free, funded by an ad after a puzzle — never during one; one purchase removes them",
+      "8 languages supported",
+    ],
+    plate: [
+      ["platform", "iOS 26+"],
+      ["price", "free, ad-funded"],
+      ["network", "ads only — the puzzles play offline"],
+      ["languages", "8"],
+    ],
+    hasTerms: false,
+    screenshots: 3,
+    appStoreUrl: "https://apps.apple.com/app/id6817486402",
+  },
+  {
     slug: "kakurogrid",
     name: "Kakuro Grid",
     tagline: "Cross sums without the guess",
